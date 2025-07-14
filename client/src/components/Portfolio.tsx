@@ -52,9 +52,12 @@ import {
   SiDocker, 
   SiTerraform, 
   SiAnsible, 
+  SiLinux, 
   SiGithubactions, 
   SiPython, 
   SiGo, 
+  SiYaml, 
+  SiMysql, 
   SiGnubash, 
   SiDatadog, 
   SiGrafana, 
@@ -227,6 +230,7 @@ export default function Portfolio() {
         { name: "Docker", icon: SiDocker, color: "text-blue-400" },
         { name: "Terraform", icon: SiTerraform, color: "text-purple-600" },
         { name: "Ansible", icon: SiAnsible, color: "text-red-600" },
+        { name: "Linux", icon: SiLinux, color: "text-yellow-600" },
         { name: "GitHub Actions", icon: SiGithubactions, color: "text-gray-800 dark:text-gray-200" }
       ]
     },
@@ -235,7 +239,8 @@ export default function Portfolio() {
       skills: [
         { name: "Python", icon: SiPython, color: "text-blue-500" },
         { name: "Go", icon: SiGo, color: "text-blue-400" },
-        { name: "Bash", icon: SiGnubash, color: "text-gray-700 dark:text-gray-300" }
+        { name: "Bash", icon: SiGnubash, color: "text-gray-700 dark:text-gray-300" },
+        { name: "YAML", icon: SiYaml, color: "text-gray-700 dark:text-gray-300" },
       ]
     },
     {
@@ -251,8 +256,9 @@ export default function Portfolio() {
       category: "Databases",
       skills: [
         { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-600" },
-        { name: "Redis", icon: SiRedis, color: "text-red-600" },
-        { name: "SQL Server", icon: Database, color: "text-red-500" }
+        { name: "SQL Server", icon: Database, color: "text-red-500" },
+        { name: "MySQL", icon: SiMysql, color: "text-blue-400" },
+        { name: "Redis", icon: SiRedis, color: "text-red-600" }, 
       ]
     }
   ];
@@ -468,7 +474,7 @@ export default function Portfolio() {
                   Education
                 </h3>
                 <div className="border-l-4 border-blue-600 pl-4">
-                  <h4 className="font-semibold text-lg text-gray-900 dark:text-white">B.Tech</h4>
+                  <h4 className="font-semibold text-lg text-gray-900 dark:text-white">Bachelor of Technology</h4>
                   <p className="text-blue-600 font-medium">Maharishi Dayanand University</p>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">Rohtak</p>
                 </div>
