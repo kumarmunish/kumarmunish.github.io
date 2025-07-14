@@ -6,6 +6,10 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { useTheme } from "./ThemeProvider";
 import { useToast } from "@/hooks/use-toast";
 import ProfileImage from "./ProfileImage";
+import MaerskIcon from '../assets/icons/maersk.png';
+import ShuttlIcon from '../assets/icons/shuttl.png';
+import TataIcon from '../assets/icons/tata1mg.png';
+import FabIcon from '../assets/icons/fabfurnish.png';
 
 import { 
   Moon, 
@@ -58,6 +62,22 @@ import {
   SiRedis, 
   SiPostgresql
 } from "react-icons/si";
+
+export const MaerskOrgIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+  <img src={MaerskIcon} alt="Maersk Icon" {...props} />
+);
+
+export const ShuttlOrgIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+  <img src={ShuttlIcon} alt="Shuttl Icon" {...props} />
+);
+
+export const TataOrgIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+  <img src={TataIcon} alt="Tata 1mg Icon" {...props} />
+);
+
+export const FabOrgIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+  <img src={FabIcon} alt="Fabfurnish Icon" {...props} />
+);
 
 export default function Portfolio() {
   const { theme, setTheme } = useTheme();
@@ -122,7 +142,7 @@ export default function Portfolio() {
       id: "maersk",
       title: "Senior Software Engineer",
       company: "A.P. Moller - Maersk",
-      icon: Ship,
+      icon: MaerskOrgIcon,
       iconColor: "text-blue-800",
       description: "Global shipping and logistics leader",
       period: "09/2021 - Present",
@@ -139,7 +159,7 @@ export default function Portfolio() {
       id: "shuttl-sre",
       title: "Site Reliability Engineer",
       company: "Shuttl",
-      icon: Bus,
+      icon: ShuttlOrgIcon,
       iconColor: "text-orange-600",
       description: "Employee transportation and mobility platform",
       period: "02/2020 - 08/2021",
@@ -154,7 +174,7 @@ export default function Portfolio() {
       id: "shuttl-qa",
       title: "Senior QA Engineer",
       company: "Shuttl",
-      icon: Bus,
+      icon: ShuttlOrgIcon,
       iconColor: "text-orange-600",
       description: "Employee transportation and mobility platform",
       period: "08/2017 - 02/2020",
@@ -168,7 +188,7 @@ export default function Portfolio() {
       id: "1mg",
       title: "QA Engineer",
       company: "1mg",
-      icon: Heart,
+      icon: TataOrgIcon,
       iconColor: "text-red-600",
       description: "Digital healthcare platform and pharmacy",
       period: "07/2015 - 08/2017",
@@ -184,7 +204,7 @@ export default function Portfolio() {
       id: "fabfurnish",
       title: "Jr QA Analyst",
       company: "Fabfurnish",
-      icon: Sofa,
+      icon: FabOrgIcon,
       iconColor: "text-amber-600",
       description: "Online furniture and home decor marketplace",
       period: "12/2014 - 07/2015",
