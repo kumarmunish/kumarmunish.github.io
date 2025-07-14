@@ -10,6 +10,7 @@ import MaerskIcon from '../assets/icons/maersk.png';
 import ShuttlIcon from '../assets/icons/shuttl.png';
 import TataIcon from '../assets/icons/tata1mg.png';
 import FabIcon from '../assets/icons/fabfurnish.png';
+import { User, FolderKanban, MailOpen } from 'lucide-react';
 
 import { 
   Moon, 
@@ -332,20 +333,23 @@ export default function Portfolio() {
               <div className="flex flex-col sm:flex-row gap-8 justify-center lg:justify-start">
                 <Button
                   onClick={() => scrollToSection('about')}
-                  className="w-32 h-32 rounded-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-40 h-40 rounded-full flex flex-col items-center justify-center rounded-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                 >
+                  <User className="w-8 h-8 mb-2" />
                   About
                 </Button>
                 <Button
                   onClick={() => scrollToSection('projects')}
-                  className="w-32 h-32 rounded-full bg-red-600 hover:bg-red-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-40 h-40 rounded-full flex flex-col items-center justify-center rounded-full bg-red-600 hover:bg-red-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                 >
+                  <FolderKanban className="w-8 h-8 mb-2" />
                   Projects
                 </Button>
                 <Button
                   onClick={() => scrollToSection('contact')}
-                  className="w-32 h-32 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-40 h-40 rounded-full flex flex-col items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                 >
+                  <MailOpen className="w-8 h-8 mb-2" />
                   Contact
                 </Button>
               </div>
