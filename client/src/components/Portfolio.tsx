@@ -6,10 +6,10 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { useTheme } from "./ThemeProvider";
 import { useToast } from "@/hooks/use-toast";
 import ProfileImage from "./ProfileImage";
-import MaerskIcon from '../assets/icons/maersk.png';
-import ShuttlIcon from '../assets/icons/shuttl.png';
-import TataIcon from '../assets/icons/tata1mg.png';
-import FabIcon from '../assets/icons/fabfurnish.png';
+import MaerskIcon from '../assets/icons/maersk.webp';
+import ShuttlIcon from '../assets/icons/shuttl.webp';
+import TataIcon from '../assets/icons/tata1mg.webp';
+import FabIcon from '../assets/icons/fabfurnish.webp';
 import { User, FolderKanban, MailOpen } from 'lucide-react';
 
 import { 
@@ -68,19 +68,19 @@ import {
 } from "react-icons/si";
 
 export const MaerskOrgIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-  <img src={MaerskIcon} alt="Maersk Icon" {...props} />
+  <img src={MaerskIcon} alt="Maersk Icon" {...props} loading="lazy" />
 );
 
 export const ShuttlOrgIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-  <img src={ShuttlIcon} alt="Shuttl Icon" {...props} />
+  <img src={ShuttlIcon} alt="Shuttl Icon" {...props} loading="lazy" />
 );
 
 export const TataOrgIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-  <img src={TataIcon} alt="Tata 1mg Icon" {...props} />
+  <img src={TataIcon} alt="Tata 1mg Icon" {...props} loading="lazy" />
 );
 
 export const FabOrgIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-  <img src={FabIcon} alt="Fabfurnish Icon" {...props} />
+  <img src={FabIcon} alt="Fabfurnish Icon" {...props} loading="lazy" />
 );
 
 export default function Portfolio() {
@@ -88,21 +88,7 @@ export default function Portfolio() {
   const { toast } = useToast();
   const [expandedJobs, setExpandedJobs] = useState<{ [key: string]: boolean }>({});
 
-  const handleDownloadZip = async () => {
-    try {
-      await createPortfolioZip();
-      toast({
-        title: "Success",
-        description: "Portfolio files downloaded successfully!",
-      });
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to download portfolio files",
-        variant: "destructive",
-      });
-    }
-  };
+  // Helper functions for scrolling and clipboard actions
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
