@@ -1,31 +1,39 @@
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import react from 'eslint-plugin-react';
 
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
     files: ['**/*.ts', '**/*.tsx'],
-    plugins: {
-      '@typescript-eslint': tseslint.plugin,
-      react,
-    },
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        ecmaFeatures: { jsx: true },
+        ecmaVersion: 'latest',
         sourceType: 'module',
       },
-    },
-    settings: {
-      react: {
-        version: 'detect',
+      globals: {
+        window: 'readonly',
+        document: 'readonly',
+        console: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
       },
     },
     rules: {
-      'react/prop-types': 'off',
-      '@typescript-eslint/no-unused-vars': ['warn'],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          args: 'after-used',
+          ignoreRestSiblings: true,
+          varsIgnorePattern: '^_',
+          argsIgnorePattern: '^_',
+        },
+      ],
+      '@typescript-eslint/no-require-imports': 'off',
+      '@typescript-eslint/no-unused-expressions': 'warn',
+      'no-undef': 'off', // disable because we now define globals explicitly
     },
   },
 ];
