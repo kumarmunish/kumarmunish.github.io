@@ -355,16 +355,17 @@ export default function Portfolio() {
                   naturally led me into SRE.
                 </p>
                 <p>
-                  Today, with over 8 years of experience across QA, DevOps, and
-                  SRE, I help teams ship confidently, recover quickly, and run
-                  production systems with fewer surprises. I focus on building
-                  internal tools, defining SLOs, setting up CI/CD pipelines, and
-                  strengthening observability — all to help teams ship faster
-                  and troubleshoot smarter. I work to reduce operational noise,
-                  improve production visibility, and create a smoother on-call
-                  experience for engineers. I thrive in high-trust, blameless
-                  cultures and enjoy mentoring others — especially those
-                  transitioning into SRE, like I once did.
+                  Today, With over 8 years of experience spanning QA, DevOps,
+                  and SRE, I specialize in helping teams ship reliably, recover
+                  quickly, and operate production systems with confidence. My
+                  work focuses on building internal tools, defining SLOs,
+                  implementing CI/CD pipelines, enhancing observability, and
+                  optimizing infrastructure to reduce noise and boost velocity.
+                  I'm driven by the goal of improving production visibility and
+                  creating a calmer on-call experience. I thrive in high-trust,
+                  blameless environments and enjoy mentoring junior engineers -
+                  especially those transitioning into SRE or DevOps, a journey
+                  I've taken myself.
                 </p>
               </div>
 
@@ -600,8 +601,8 @@ export default function Portfolio() {
                         MTTR Improvement
                       </h4>
                       <p className="text-gray-600 dark:text-gray-300 text-sm">
-                        Reduced Mean Time to Recovery for incidents
-                        by 30% through observability improvements
+                        Reduced Mean Time to Recovery for incidents by 30%
+                        through observability improvements
                       </p>
                     </div>
                   </div>
