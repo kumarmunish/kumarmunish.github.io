@@ -368,25 +368,47 @@ export default function Portfolio() {
                 </p>
               </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-8 justify-center lg:justify-start">
+              {/* Action Buttons - Visible only on Mobile */}
+              <div className="grid grid-cols-2 sm:hidden gap-3 mt-4">
                 <Button
                   onClick={() => scrollToSection("about")}
-                  className="w-40 h-40 rounded-full flex flex-col items-center justify-center rounded-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="flex items-center justify-center gap-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm py-3 col-span-1"
+                >
+                  <User className="w-4 h-4" /> About
+                </Button>
+                <Button
+                  onClick={() => scrollToSection("projects")}
+                  className="flex items-center justify-center gap-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-sm py-3 col-span-1"
+                >
+                  <FolderKanban className="w-4 h-4" /> Projects
+                </Button>
+                <Button
+                  onClick={() => scrollToSection("contact")}
+                  className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-3 col-span-2"
+                >
+                  <MailOpen className="w-4 h-4" /> Contact
+                </Button>
+              </div>
+
+              {/* Action Buttons - Visible only on Desktop */}
+              <div className="hidden sm:flex flex-row gap-8 mt-4 justify-start">
+                <Button
+                  onClick={() => scrollToSection("about")}
+                  className="w-40 h-40 flex flex-col items-center justify-center rounded-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                 >
                   <User className="w-8 h-8 mb-2" />
                   About
                 </Button>
                 <Button
                   onClick={() => scrollToSection("projects")}
-                  className="w-40 h-40 rounded-full flex flex-col items-center justify-center rounded-full bg-red-600 hover:bg-red-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-40 h-40 flex flex-col items-center justify-center rounded-full bg-red-600 hover:bg-red-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                 >
                   <FolderKanban className="w-8 h-8 mb-2" />
                   Projects
                 </Button>
                 <Button
                   onClick={() => scrollToSection("contact")}
-                  className="w-40 h-40 rounded-full flex flex-col items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  className="w-40 h-40 flex flex-col items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                 >
                   <MailOpen className="w-8 h-8 mb-2" />
                   Contact
