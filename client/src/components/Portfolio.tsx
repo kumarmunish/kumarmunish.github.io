@@ -282,7 +282,11 @@ export default function Portfolio() {
               <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Munish Kumar
                 <span className="text-gray-600 dark:text-gray-400 font-normal">
-                  · Site Reliability Engineer
+                  ·{" "}
+                  <span className="hidden sm:inline">
+                    Site Reliability Engineer
+                  </span>
+                  <span className="inline sm:hidden">SRE</span>
                 </span>
               </h1>
             </div>
