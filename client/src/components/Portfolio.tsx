@@ -493,7 +493,7 @@ export default function Portfolio() {
                           <CollapsibleContent className="mt-3">
                             <div className="pl-2 border-l-2 border-gray-200 dark:border-gray-700">
                               <h5 className="font-medium text-gray-900 dark:text-white mb-3">
-                                Key Achievements:
+                                Impact Highlights:
                               </h5>
                               <ul className="text-gray-600 dark:text-gray-300 text-sm space-y-2">
                                 {job.details.map((detail, detailIndex) => (
@@ -600,7 +600,7 @@ export default function Portfolio() {
                         MTTR Improvement
                       </h4>
                       <p className="text-gray-600 dark:text-gray-300 text-sm">
-                        Reduced Mean Time to Recovery (or Repair) for incidents
+                        Reduced Mean Time to Recovery for incidents
                         by 30% through observability improvements
                       </p>
                     </div>
