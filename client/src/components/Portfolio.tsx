@@ -293,10 +293,10 @@ export default function Portfolio() {
             <div className="flex items-center space-x-8">
               <nav className="hidden md:flex space-x-8">
                 <button
-                  onClick={() => scrollToSection("about")}
+                  onClick={() => scrollToSection("profile")}
                   className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
-                  About
+                  Profile
                 </button>
                 <button
                   onClick={() => scrollToSection("projects")}
@@ -372,10 +372,10 @@ export default function Portfolio() {
               {/* Action Buttons - Visible only on Mobile */}
               <div className="grid grid-cols-2 sm:hidden gap-3 mt-4">
                 <Button
-                  onClick={() => scrollToSection("about")}
+                  onClick={() => scrollToSection("profile")}
                   className="flex items-center justify-center gap-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm py-3 col-span-1"
                 >
-                  <User className="w-4 h-4" /> About
+                  <User className="w-4 h-4" /> Profile
                 </Button>
                 <Button
                   onClick={() => scrollToSection("projects")}
@@ -394,11 +394,11 @@ export default function Portfolio() {
               {/* Action Buttons - Visible only on Desktop */}
               <div className="hidden sm:flex flex-row gap-8 mt-4 justify-start">
                 <Button
-                  onClick={() => scrollToSection("about")}
+                  onClick={() => scrollToSection("profile")}
                   className="w-40 h-40 flex flex-col items-center justify-center rounded-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
                 >
                   <User className="w-8 h-8 mb-2" />
-                  About
+                  Profile
                 </Button>
                 <Button
                   onClick={() => scrollToSection("projects")}
@@ -420,14 +420,14 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* Profile Section */}
       <section
-        id="about"
+        id="profile"
         className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800"
       >
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
-            About Me
+            Tech Profile
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -436,7 +436,7 @@ export default function Portfolio() {
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white flex items-center">
                   <Briefcase className="mr-3 text-blue-600" />
-                  Work History
+                  Work Timeline
                 </h3>
                 <div className="space-y-4">
                   {workExperience.map((job, index) => {
@@ -521,12 +521,12 @@ export default function Portfolio() {
               </CardContent>
             </Card>
 
-            {/* Skills & Tools */}
+            {/* Skills & Tech Stack */}
             <Card className="bg-white dark:bg-gray-900 shadow-lg">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white flex items-center">
                   <Code className="mr-3 text-blue-600" />
-                  Skills & Tools
+                  Skills & Tech Stack
                 </h3>
                 <div className="space-y-8">
                   {skillsData.map((category, categoryIndex) => (
