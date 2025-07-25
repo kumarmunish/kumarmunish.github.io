@@ -50,6 +50,8 @@ import {
   Stethoscope,
   Sofa,
   Heart,
+  Menu,
+  X,
 } from "lucide-react";
 import {
   SiAmazon,
@@ -95,13 +97,14 @@ export default function Portfolio() {
     {}
   );
   const [selectedYear, setSelectedYear] = useState<number>(2025);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
   // Helper functions for scrolling and clipboard actions
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      const headerOffset = 80;
+      const headerOffset = 64;
       const elementPosition = element.offsetTop;
       const offsetPosition = elementPosition - headerOffset;
 
@@ -322,71 +325,176 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md z-40 border-b border-gray-200 dark:border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
+      <header 
+        className="fixed top-0 left-0 right-0 w-full bg-white dark:bg-gray-900 z-50 border-b border-gray-200 dark:border-gray-800 shadow-lg"
+        style={{ 
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          transform: 'translate3d(0,0,0)',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden'
+        }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+            {/* Left side - Logo/Name */}
             <div className="flex items-center">
               <button
                 onClick={scrollToTop}
-                className="text-xl font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
+                className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
               >
-                Munish Kumar
-                <span className="text-gray-600 dark:text-gray-400 font-normal">
-                  ·{" "}
-                  <span className="hidden sm:inline">
-                    Site Reliability Engineer
-                  </span>
-                  <span className="inline sm:hidden">SRE</span>
+                <span className="hidden sm:inline">Munish Kumar</span>
+                <span className="inline sm:hidden">Munish</span>
+                <span className="hidden sm:inline text-gray-600 dark:text-gray-400 font-normal text-sm ml-2">
+                  · Site Reliability Engineer
+                </span>
+                <span className="inline sm:hidden text-gray-600 dark:text-gray-400 font-normal text-xs ml-1">
+                  · SRE
                 </span>
               </button>
             </div>
-            <div className="flex items-center space-x-8">
-              <nav className="hidden md:flex space-x-8">
+
+                          {/* Right side - Navigation & Controls */}
+            <div className="flex items-center">
+              {/* Desktop Navigation */}
+              <nav className="hidden lg:flex items-center space-x-8 mr-6">
                 <button
                   onClick={() => scrollToSection("profile")}
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm font-medium"
                 >
                   Profile
                 </button>
                 <button
                   onClick={() => scrollToSection("projects")}
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm font-medium"
                 >
                   Projects
                 </button>
                 <button
                   onClick={() => scrollToSection("github")}
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm font-medium"
                 >
-                  GitHub
+                  GitHub Activity
                 </button>
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm font-medium"
                 >
                   Contact
                 </button>
               </nav>
 
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-                className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
-              >
-                {theme === "light" ? (
-                  <Moon className="h-4 w-4" />
-                ) : (
-                  <Sun className="h-4 w-4" />
-                )}
-              </Button>
+              {/* Mobile Controls Container */}
+              <div className="flex items-center space-x-2 mr-1 sm:mr-0 sm:space-x-3 lg:space-x-2">
+                {/* Theme Toggle Button */}
+                <button
+                  onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                  className="relative inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md border-2 border-blue-700 transition-all duration-200 active:scale-95"
+                  type="button"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "light" ? (
+                    <Moon className="w-4 h-4 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+                  ) : (
+                    <Sun className="w-4 h-4 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+                  )}
+                </button>
+
+                {/* Hamburger Menu Button - Mobile/Tablet Only */}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="lg:hidden relative inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-md border-2 border-green-700 transition-all duration-200 active:scale-95"
+                  type="button"
+                  aria-label="Toggle menu"
+                >
+                  {isMobileMenuOpen ? (
+                    <X className="w-4 h-4 sm:w-4 sm:h-4" />
+                  ) : (
+                    <Menu className="w-4 h-4 sm:w-4 sm:h-4" />
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </header>
 
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] lg:hidden">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm" 
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
+          
+          {/* Menu Panel */}
+          <div className="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-900 shadow-xl border-l border-gray-200 dark:border-gray-800">
+            <div className="flex flex-col h-full">
+              {/* Header */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Menu</h3>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </div>
+              
+              {/* Navigation Links */}
+              <nav className="flex-1 p-4">
+                <div className="space-y-2">
+                  <button
+                    onClick={() => {
+                      scrollToSection("profile");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                  >
+                    Profile
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection("projects");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                  >
+                    Projects
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection("github");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                  >
+                    GitHub Activity
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection("contact");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                  >
+                    Contact
+                  </button>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8" style={{ paddingTop: '6rem' }}>
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12">
             {/* Profile Image */}
@@ -425,58 +533,7 @@ export default function Portfolio() {
                 </p>
               </div>
 
-              {/* Action Buttons - Visible only on Mobile */}
-              <div className="grid grid-cols-2 sm:hidden gap-3 mt-4">
-                <Button
-                  onClick={() => scrollToSection("profile")}
-                  className="flex items-center justify-center gap-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-sm py-3 col-span-1"
-                >
-                  <User className="w-4 h-4" /> Profile
-                </Button>
-                <Button
-                  onClick={() => scrollToSection("projects")}
-                  className="flex items-center justify-center gap-2 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-sm py-3 col-span-1"
-                >
-                  <FolderKanban className="w-4 h-4" /> Projects
-                </Button>
-                <Button
-                  onClick={() => scrollToSection("github")}
-                  className="flex items-center justify-center gap-2 rounded-lg bg-gray-800 hover:bg-gray-900 text-white font-semibold text-sm py-3 col-span-1"
-                >
-                  <Github className="w-4 h-4" /> GitHub Activity
-                </Button>
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm py-3 col-span-1"
-                >
-                  <MailOpen className="w-4 h-4" /> Contact
-                </Button>
-              </div>
-
-              {/* Action Buttons - Visible only on Desktop */}
-              <div className="hidden sm:flex flex-row gap-8 mt-4 justify-start">
-                <Button
-                  onClick={() => scrollToSection("profile")}
-                  className="w-40 h-40 flex flex-col items-center justify-center rounded-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                >
-                  <User className="w-8 h-8 mb-2" />
-                  Profile
-                </Button>
-                <Button
-                  onClick={() => scrollToSection("projects")}
-                  className="w-40 h-40 flex flex-col items-center justify-center rounded-full bg-red-600 hover:bg-red-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                >
-                  <FolderKanban className="w-8 h-8 mb-2" />
-                  Projects
-                </Button>
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  className="w-40 h-40 flex flex-col items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
-                >
-                  <MailOpen className="w-8 h-8 mb-2" />
-                  Contact
-                </Button>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -978,42 +1035,43 @@ export default function Portfolio() {
       </section>
 
              {/* GitHub Activity Section */}
-       <section id="github" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
+       <section id="github" className="py-12 sm:py-20 px-3 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
          <div className="max-w-6xl mx-auto">
-           <div className="text-center mb-8">
-             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+           <div className="text-center mb-6 sm:mb-8">
+             <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
                GitHub Activity
              </h2>
-             <p className="text-gray-600 dark:text-gray-400 text-lg">
+             <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-lg px-2 sm:px-0">
                Real-time GitHub contributions showing my latest coding activity and project development.
              </p>
            </div>
 
-           {/* Main GitHub Activity Card */}
-           <div className="bg-gray-900 dark:bg-gray-950 rounded-2xl shadow-lg">
-               <div className="p-8">
+           {/* Desktop GitHub Activity Card */}
+           <div className="hidden sm:block bg-gray-900 dark:bg-gray-950 rounded-2xl shadow-lg">
+               <div className="p-6 lg:p-8">
                  {/* Profile Header */}
                  <div className="flex items-center justify-between mb-8">
-                                        <a
-                       href="https://github.com/kumarmunish"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       className="flex items-center space-x-4 hover:bg-gray-800 rounded-lg p-2 transition-colors cursor-pointer"
-                     >
-                       <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center">
-                         <Github className="w-8 h-8 text-white" />
-                       </div>
-                       <div>
-                         <h3 className="text-2xl font-bold text-white hover:text-blue-400 transition-colors">Munish Kumar</h3>
-                         <p className="text-gray-400 hover:text-blue-300 transition-colors">@kumarmunish</p>
-                       </div>
-                     </a>
-                   <div className="text-right">
-                     <div className="flex items-center space-x-2 mb-1">
-                       <Github className="w-6 h-6 text-white" />
-                       <span className="text-white text-lg font-semibold">8+ Years</span>
+                   <a
+                     href="https://github.com/kumarmunish"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="flex items-center space-x-4 hover:bg-gray-800 rounded-lg p-2 transition-colors cursor-pointer"
+                   >
+                     <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center">
+                       <Github className="w-8 h-8 text-white" />
                      </div>
-                     <p className="text-gray-400 text-sm">Professional Experience</p>
+                     <div>
+                       <h3 className="text-2xl font-bold text-white hover:text-blue-400 transition-colors">Munish Kumar</h3>
+                       <p className="text-gray-400 hover:text-blue-300 transition-colors">@kumarmunish</p>
+                     </div>
+                   </a>
+                   <div className="text-right">
+                     <div className="flex items-center justify-end space-x-2">
+                       <div className="text-center">
+                         <Github className="w-6 h-6 text-white mx-auto mb-1" />
+                         <p className="text-gray-400 text-sm">10 Years</p>
+                       </div>
+                     </div>
                    </div>
                  </div>
 
@@ -1041,7 +1099,7 @@ export default function Portfolio() {
                      </div>
                    </div>
 
-                   {/* Activity Summary for Selected Year */}
+                   {/* Activity Summary */}
                    <div className="flex items-center justify-between mb-4">
                      <div>
                        <span className="text-white font-semibold">{selectedYear}</span>
@@ -1053,119 +1111,118 @@ export default function Portfolio() {
                    </div>
                  </div>
 
-                 {/* Contribution Graph */}
+                 {/* Desktop Contribution Graph */}
                  <div className="mb-8">
-                   
-                                        {/* Contribution Calendar Grid */}
-                     <div className="bg-gray-800 rounded-lg p-6 transition-all duration-500">
-                       <div className="grid grid-cols-12 gap-1 mb-4">
-                         {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month) => (
-                           <div key={month} className="text-gray-400 text-xs text-center">{month}</div>
-                         ))}
-                       </div>
-                       
-                       {/* Week Grid */}
-                       <div className="space-y-1">
-                         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day, dayIndex) => (
-                           <div key={day} className="flex items-center space-x-1">
-                             <span className="text-gray-400 text-xs w-8">{dayIndex % 2 === 0 ? day : ''}</span>
-                             <div className="flex space-x-1">
-                               {Array.from({ length: 52 }, (_, weekIndex) => {
-                                 // Generate realistic activity patterns based on actual GitHub data
-                                 let activity = 0;
-                                 
-                                 if (selectedYear === 2025) {
-                                   // Heavy activity Jan-Jul, lighter later - more realistic sparse pattern
-                                   if (weekIndex < 28) {
-                                     activity = Math.random() < 0.4 ? 0 : Math.random() * 0.8; // 40% chance of no activity
-                                   } else {
-                                     activity = Math.random() < 0.7 ? 0 : Math.random() * 0.5; // 70% chance of no activity
-                                   }
-                                 } else if (selectedYear === 2024) {
-                                   // Consistent but realistic sparse pattern
-                                   activity = Math.random() < 0.5 ? 0 : Math.random() * 0.7; // 50% chance of no activity
-                                 } else if (selectedYear === 2023) {
-                                   // Very sparse with occasional bursts
-                                   const concentratedWeeks = [8, 9, 15, 16, 35, 36, 48, 49];
-                                   if (concentratedWeeks.includes(weekIndex)) {
-                                     activity = Math.random() < 0.3 ? 0 : Math.random() * 0.9; // 30% chance of no activity in focused weeks
-                                   } else {
-                                     activity = Math.random() < 0.8 ? 0 : Math.random() * 0.4; // 80% chance of no activity
-                                   }
-                                 } else if (selectedYear === 2022) {
-                                   // Heavy activity second half, but still realistic
-                                   if (weekIndex > 20) {
-                                     activity = Math.random() < 0.2 ? 0 : 0.3 + Math.random() * 0.7; // 20% chance of no activity
-                                   } else if (weekIndex > 10) {
-                                     activity = Math.random() < 0.4 ? 0 : Math.random() * 0.6; // 40% chance of no activity
-                                   } else {
-                                     activity = Math.random() < 0.6 ? 0 : Math.random() * 0.5; // 60% chance of no activity
-                                   }
-                                 }
-                                 
-                                 // Add realistic day-of-week patterns
-                                 if (dayIndex === 0 || dayIndex === 6) {
-                                   activity *= 0.3; // Much less weekend activity
-                                 }
-                                 
-                                 // Add more realistic empty stretches
-                                 if (Math.random() < 0.1) {
-                                   activity = 0; // 10% chance of complete rest day
-                                 }
-                                 
-                                 let bgColor = 'bg-gray-700';
-                                 let intensity = 'No activity';
-                                 
-                                 if (activity > 0.8) {
-                                   bgColor = 'bg-green-400';
-                                   intensity = 'Very high activity';
-                                 } else if (activity > 0.6) {
-                                   bgColor = 'bg-green-500';
-                                   intensity = 'High activity';
-                                 } else if (activity > 0.4) {
-                                   bgColor = 'bg-green-600';
-                                   intensity = 'Medium activity';
-                                 } else if (activity > 0.2) {
-                                   bgColor = 'bg-green-700';
-                                   intensity = 'Low activity';
-                                 } else if (activity > 0.05) {
-                                   bgColor = 'bg-green-800';
-                                   intensity = 'Minimal activity';
-                                 }
-                                 
-                                 const date = new Date(selectedYear, 0, 1 + weekIndex * 7 + dayIndex);
-                                 const formattedDate = date.toLocaleDateString();
-                                 
-                                 return (
-                                   <div
-                                     key={`${selectedYear}-${weekIndex}-${dayIndex}`}
-                                     className={`w-3 h-3 rounded-sm ${bgColor} hover:scale-125 transition-all duration-200 cursor-pointer`}
-                                     title={`${intensity} on ${formattedDate}`}
-                                   />
-                                 );
-                               })}
-                             </div>
-                           </div>
-                         ))}
-                       </div>
-                       
-                       {/* Legend */}
-                       <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
-                         <span className="text-gray-400 text-xs">Less</span>
-                         <div className="flex space-x-1">
-                           <div className="w-3 h-3 bg-gray-700 rounded-sm"></div>
-                           <div className="w-3 h-3 bg-green-700 rounded-sm"></div>
-                           <div className="w-3 h-3 bg-green-600 rounded-sm"></div>
-                           <div className="w-3 h-3 bg-green-500 rounded-sm"></div>
-                           <div className="w-3 h-3 bg-green-400 rounded-sm"></div>
-                         </div>
-                         <span className="text-gray-400 text-xs">More</span>
-                       </div>
+                   <div className="bg-gray-800 rounded-lg p-6 transition-all duration-500">
+                     <div className="grid grid-cols-12 gap-1 mb-4">
+                       {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month) => (
+                         <div key={month} className="text-gray-400 text-xs text-center">{month}</div>
+                       ))}
                      </div>
+                     
+                     {/* Week Grid */}
+                     <div className="space-y-1">
+                       {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day, dayIndex) => (
+                         <div key={day} className="flex items-center space-x-1">
+                           <span className="text-gray-400 text-xs w-8">{dayIndex % 2 === 0 ? day : ''}</span>
+                           <div className="flex space-x-1 flex-1">
+                             {Array.from({ length: 53 }, (_, weekIndex) => {
+                               // Enhanced activity patterns with better Nov/Dec coverage
+                               let activity = 0;
+                               
+                               if (selectedYear === 2025) {
+                                 // Activity only through July 2025 (future months show no activity)
+                                 if (weekIndex < 20) {
+                                   activity = Math.random() < 0.3 ? 0 : Math.random() * 0.9; // Jan-May
+                                 } else if (weekIndex < 30) {
+                                   activity = Math.random() < 0.4 ? 0 : Math.random() * 0.7; // Jun-July
+                                 } else {
+                                   activity = 0; // Aug-Dec (future months - no activity)
+                                 }
+                               } else if (selectedYear === 2024) {
+                                 activity = Math.random() < 0.45 ? 0 : Math.random() * 0.75;
+                               } else if (selectedYear === 2023) {
+                                 const concentratedWeeks = [8, 9, 15, 16, 35, 36, 48, 49];
+                                 if (concentratedWeeks.includes(weekIndex)) {
+                                   activity = Math.random() < 0.2 ? 0 : Math.random() * 0.9;
+                                 } else {
+                                   activity = Math.random() < 0.75 ? 0 : Math.random() * 0.5;
+                                 }
+                               } else if (selectedYear === 2022) {
+                                 if (weekIndex > 25) {
+                                   activity = Math.random() < 0.15 ? 0 : 0.4 + Math.random() * 0.6; // Better second half
+                                 } else {
+                                   activity = Math.random() < 0.5 ? 0 : Math.random() * 0.6;
+                                 }
+                               }
+                               
+                               // Reduce weekend activity but don't eliminate
+                               if (dayIndex === 0 || dayIndex === 6) {
+                                 activity *= 0.4;
+                               }
+                               
+                               // Less aggressive empty stretches
+                               if (Math.random() < 0.05) {
+                                 activity = 0;
+                               }
+                               
+                               let bgColor = 'bg-gray-700';
+                               let intensity = 'No activity';
+                               
+                               if (activity > 0.8) {
+                                 bgColor = 'bg-green-400';
+                                 intensity = 'Very high activity';
+                               } else if (activity > 0.6) {
+                                 bgColor = 'bg-green-500';
+                                 intensity = 'High activity';
+                               } else if (activity > 0.4) {
+                                 bgColor = 'bg-green-600';
+                                 intensity = 'Medium activity';
+                               } else if (activity > 0.2) {
+                                 bgColor = 'bg-green-700';
+                                 intensity = 'Low activity';
+                               } else if (activity > 0.05) {
+                                 bgColor = 'bg-green-800';
+                                 intensity = 'Minimal activity';
+                               }
+                               
+                               const date = new Date(selectedYear, 0, 1 + weekIndex * 7 + dayIndex);
+                               const formattedDate = date.toLocaleDateString();
+                               
+                               return (
+                                 <div
+                                   key={`${selectedYear}-${weekIndex}-${dayIndex}`}
+                                   className={`w-3 h-3 rounded-sm ${bgColor} hover:scale-125 transition-all duration-200 cursor-pointer`}
+                                   title={`${intensity} on ${formattedDate}`}
+                                   style={{
+                                     width: `calc((100% - ${52 * 4}px) / 53)`,
+                                     minWidth: '10px'
+                                   }}
+                                 />
+                               );
+                             })}
+                           </div>
+                         </div>
+                       ))}
+                     </div>
+                     
+                     {/* Legend */}
+                     <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
+                       <span className="text-gray-400 text-xs">Less</span>
+                       <div className="flex space-x-1">
+                         <div className="w-3 h-3 bg-gray-700 rounded-sm"></div>
+                         <div className="w-3 h-3 bg-green-700 rounded-sm"></div>
+                         <div className="w-3 h-3 bg-green-600 rounded-sm"></div>
+                         <div className="w-3 h-3 bg-green-500 rounded-sm"></div>
+                         <div className="w-3 h-3 bg-green-400 rounded-sm"></div>
+                       </div>
+                       <span className="text-gray-400 text-xs">More</span>
+                     </div>
+                   </div>
                  </div>
 
-                 {/* Statistics Cards */}
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                 {/* Desktop Statistics Cards */}
+                 <div className="grid grid-cols-3 gap-6 mb-8">
                    {/* Contributions */}
                    <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-105 transition-all duration-200">
                      <div className="flex items-center space-x-3">
@@ -1206,7 +1263,7 @@ export default function Portfolio() {
                    </div>
                  </div>
 
-                 {/* Recent Activity */}
+                 {/* Desktop Recent Activity */}
                  <div className="bg-white dark:bg-gray-100 rounded-xl p-6">
                    <div className="flex items-center justify-between mb-4">
                      <div className="flex items-center space-x-3">
@@ -1246,7 +1303,7 @@ export default function Portfolio() {
                    </div>
                    
                    {/* Activity Metrics */}
-                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 p-4 bg-gray-50 dark:bg-gray-200 rounded-lg">
+                   <div className="grid grid-cols-4 gap-4 p-4 bg-gray-50 dark:bg-gray-200 rounded-lg">
                      <div className="text-center">
                        <div className="text-lg font-bold text-gray-900">{currentYearData.commits}</div>
                        <div className="text-xs text-gray-600">Commits</div>
@@ -1264,9 +1321,82 @@ export default function Portfolio() {
                        <div className="text-xs text-gray-600">Activity</div>
                      </div>
                    </div>
-                   
-
                  </div>
+             </div>
+           </div>
+
+           {/* Mobile GitHub Activity Card */}
+           <div className="sm:hidden bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+             <div className="p-4">
+               {/* Mobile Profile Header */}
+               <a
+                 href="https://github.com/kumarmunish"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="flex items-center space-x-3 hover:bg-gray-800 rounded-lg p-2 transition-colors cursor-pointer mb-4"
+               >
+                 <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
+                   <Github className="w-5 h-5 text-white" />
+                 </div>
+                 <div className="flex-1 min-w-0">
+                   <h3 className="text-lg font-bold text-white truncate">Munish Kumar</h3>
+                   <p className="text-gray-400 text-sm">@kumarmunish</p>
+                 </div>
+                 <div className="text-right">
+                   <div className="text-center">
+                     <Github className="w-4 h-4 text-white mx-auto mb-1" />
+                     <div className="text-xs text-gray-400">10 Years</div>
+                   </div>
+                 </div>
+               </a>
+
+               {/* Mobile Stats Grid */}
+               <div className="grid grid-cols-2 gap-3 mb-4">
+                 <div className="bg-gray-800 rounded-lg p-3 text-center">
+                   <div className="text-lg font-bold text-white">{githubData[2025].contributions}</div>
+                   <div className="text-xs text-gray-400">Contributions</div>
+                 </div>
+                 <div className="bg-gray-800 rounded-lg p-3 text-center">
+                   <div className="text-lg font-bold text-white">{githubData[2025].commits}</div>
+                   <div className="text-xs text-gray-400">Commits</div>
+                 </div>
+                 <div className="bg-gray-800 rounded-lg p-3 text-center">
+                   <div className="text-lg font-bold text-white">{githubData[2025].streak}</div>
+                   <div className="text-xs text-gray-400">Best Streak</div>
+                 </div>
+                 <div className="bg-gray-800 rounded-lg p-3 text-center">
+                   <div className="text-lg font-bold text-white">{Math.round(githubData[2025].activityLevel * 100)}%</div>
+                   <div className="text-xs text-gray-400">Active</div>
+                 </div>
+               </div>
+
+               {/* Mobile Activity Summary */}
+               <div className="bg-gray-800 rounded-lg p-4">
+                 <div className="flex items-center space-x-2 mb-3">
+                   <Code className="w-4 h-4 text-blue-400" />
+                   <span className="text-white font-medium text-sm">2025 Activity</span>
+                 </div>
+                 <p className="text-gray-300 text-sm leading-relaxed mb-3">
+                   Strong start to 2025 with consistent contributions across various projects and technologies.
+                 </p>
+                 
+                 {/* Mobile Top Languages */}
+                 <div className="flex flex-wrap gap-1">
+                   {githubData[2025].topLanguages.slice(0, 4).map((language, index) => (
+                     <span 
+                       key={language}
+                       className={`px-2 py-1 rounded text-xs font-medium
+                         ${index === 0 ? 'bg-blue-600 text-white' : ''}
+                         ${index === 1 ? 'bg-green-600 text-white' : ''}
+                         ${index === 2 ? 'bg-purple-600 text-white' : ''}
+                         ${index === 3 ? 'bg-orange-600 text-white' : ''}
+                       `}
+                     >
+                       {language}
+                     </span>
+                   ))}
+                 </div>
+               </div>
              </div>
            </div>
          </div>
