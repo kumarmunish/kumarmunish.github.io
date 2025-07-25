@@ -152,7 +152,7 @@ export default function Portfolio() {
       streak: 12,
       contributions: 588,
       topLanguages: ['TypeScript', 'Python', 'Go', 'YAML'],
-      activity: 'Exceptional start to 2025 with portfolio modernization, React/TypeScript development, and advanced SRE tooling.',
+      activity: 'Exceptional start to 2025 with advanced SRE tooling focused on alerting systems, comprehensive monitoring setup, and infrastructure optimizations for enhanced reliability.',
       activityLevel: 0.95
     },
     2024: {
@@ -1047,7 +1047,7 @@ export default function Portfolio() {
            </div>
 
            {/* Desktop GitHub Activity Card */}
-           <div className="hidden sm:block bg-gray-900 dark:bg-gray-950 rounded-2xl shadow-lg">
+           <div className="hidden sm:block bg-gray-900 dark:bg-gray-950 rounded-2xl shadow-lg animate-slide-in-left">
                <div className="p-6 lg:p-8">
                  {/* Profile Header */}
                  <div className="flex items-center justify-between mb-8">
@@ -1104,9 +1104,6 @@ export default function Portfolio() {
                      <div>
                        <span className="text-white font-semibold">{selectedYear}</span>
                        <span className="text-gray-400 ml-4">{currentYearData.contributions} Contributions</span>
-                     </div>
-                     <div className="text-gray-400 text-sm">
-                       <span className="text-white">🔥</span> {Math.round(currentYearData.activityLevel * 100)}% Active
                      </div>
                    </div>
                  </div>
@@ -1189,17 +1186,17 @@ export default function Portfolio() {
                                const date = new Date(selectedYear, 0, 1 + weekIndex * 7 + dayIndex);
                                const formattedDate = date.toLocaleDateString();
                                
-                               return (
-                                 <div
-                                   key={`${selectedYear}-${weekIndex}-${dayIndex}`}
-                                   className={`w-3 h-3 rounded-sm ${bgColor} hover:scale-125 transition-all duration-200 cursor-pointer`}
-                                   title={`${intensity} on ${formattedDate}`}
-                                   style={{
-                                     width: `calc((100% - ${52 * 4}px) / 53)`,
-                                     minWidth: '10px'
-                                   }}
-                                 />
-                               );
+                                                                return (
+                                   <div
+                                     key={`${selectedYear}-${weekIndex}-${dayIndex}`}
+                                     className={`w-3 h-3 rounded-sm ${bgColor} hover:scale-125 hover:shadow-lg transition-all duration-300 cursor-pointer hover:z-10 relative`}
+                                     title={`${intensity} on ${formattedDate}`}
+                                     style={{
+                                       width: `calc((100% - ${52 * 4}px) / 53)`,
+                                       minWidth: '10px'
+                                     }}
+                                   />
+                                 );
                              })}
                            </div>
                          </div>
@@ -1224,7 +1221,7 @@ export default function Portfolio() {
                  {/* Desktop Statistics Cards */}
                  <div className="grid grid-cols-3 gap-6 mb-8">
                    {/* Contributions */}
-                   <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-105 transition-all duration-200">
+                   <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl animate-bounce-in animate-glow">
                      <div className="flex items-center space-x-3">
                        <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
                          <Terminal className="w-6 h-6 text-white" />
@@ -1237,7 +1234,7 @@ export default function Portfolio() {
                    </div>
 
                    {/* Current Streak */}
-                   <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-105 transition-all duration-200">
+                   <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl animate-bounce-in animation-delay-200">
                      <div className="flex items-center space-x-3">
                        <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
                          <Rocket className="w-6 h-6 text-white" />
@@ -1250,7 +1247,7 @@ export default function Portfolio() {
                    </div>
 
                    {/* Total Contributions */}
-                   <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-105 transition-all duration-200">
+                   <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-lg animate-fade-in-up" style={{ animationDelay: '200ms' }}>
                      <div className="flex items-center space-x-3">
                        <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
                          <Trophy className="w-6 h-6 text-white" />
@@ -1265,16 +1262,11 @@ export default function Portfolio() {
 
                  {/* Desktop Recent Activity */}
                  <div className="bg-white dark:bg-gray-100 rounded-xl p-6">
-                   <div className="flex items-center justify-between mb-4">
-                     <div className="flex items-center space-x-3">
-                       <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
-                         <Code className="w-5 h-5 text-white" />
-                       </div>
-                       <h4 className="text-xl font-semibold text-gray-900">{selectedYear} Activity Overview</h4>
+                   <div className="flex items-center space-x-3 mb-4">
+                     <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                       <Code className="w-5 h-5 text-white" />
                      </div>
-                     <div className="text-sm text-gray-500">
-                       {Math.round(currentYearData.activityLevel * 100)}% Active Year
-                     </div>
+                     <h4 className="text-xl font-semibold text-gray-900">{selectedYear} Activity Overview</h4>
                    </div>
                    
                    <p className="text-gray-700 leading-relaxed mb-4">
@@ -1283,18 +1275,21 @@ export default function Portfolio() {
 
                    {/* Top Languages */}
                    <div className="mb-6">
-                     <h5 className="text-sm font-semibold text-gray-900 mb-3">Top Languages & Technologies:</h5>
                      <div className="flex flex-wrap gap-2">
                        {currentYearData.topLanguages.map((language, index) => (
                          <Badge 
                            key={language}
                            variant="secondary" 
                            className={`
-                             ${index === 0 ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : ''}
-                             ${index === 1 ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : ''}
-                             ${index === 2 ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200' : ''}
-                             ${index === 3 ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200' : ''}
+                             transform hover:scale-105 transition-all duration-200 cursor-default
+                             ${index === 0 ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 animate-fade-in-up' : ''}
+                             ${index === 1 ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 animate-fade-in-up animation-delay-100' : ''}
+                             ${index === 2 ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 animate-fade-in-up animation-delay-200' : ''}
+                             ${index === 3 ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 animate-fade-in-up animation-delay-300' : ''}
                            `}
+                           style={{
+                             animationDelay: `${index * 100}ms`
+                           }}
                          >
                            {language}
                          </Badge>
@@ -1326,7 +1321,7 @@ export default function Portfolio() {
            </div>
 
            {/* Mobile GitHub Activity Card */}
-           <div className="sm:hidden bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+           <div className="sm:hidden bg-gray-900 rounded-xl shadow-lg overflow-hidden animate-slide-in-right">
              <div className="p-4">
                {/* Mobile Profile Header */}
                <a
@@ -1351,22 +1346,18 @@ export default function Portfolio() {
                </a>
 
                {/* Mobile Stats Grid */}
-               <div className="grid grid-cols-2 gap-3 mb-4">
-                 <div className="bg-gray-800 rounded-lg p-3 text-center">
+               <div className="grid grid-cols-3 gap-3 mb-4">
+                 <div className="bg-gray-800 rounded-lg p-3 text-center transform hover:scale-105 transition-all duration-200 animate-fade-in-up">
                    <div className="text-lg font-bold text-white">{githubData[2025].contributions}</div>
                    <div className="text-xs text-gray-400">Contributions</div>
                  </div>
-                 <div className="bg-gray-800 rounded-lg p-3 text-center">
+                 <div className="bg-gray-800 rounded-lg p-3 text-center transform hover:scale-105 transition-all duration-200 animate-fade-in-up" style={{ animationDelay: '50ms' }}>
                    <div className="text-lg font-bold text-white">{githubData[2025].commits}</div>
                    <div className="text-xs text-gray-400">Commits</div>
                  </div>
-                 <div className="bg-gray-800 rounded-lg p-3 text-center">
+                 <div className="bg-gray-800 rounded-lg p-3 text-center transform hover:scale-105 transition-all duration-200 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
                    <div className="text-lg font-bold text-white">{githubData[2025].streak}</div>
                    <div className="text-xs text-gray-400">Best Streak</div>
-                 </div>
-                 <div className="bg-gray-800 rounded-lg p-3 text-center">
-                   <div className="text-lg font-bold text-white">{Math.round(githubData[2025].activityLevel * 100)}%</div>
-                   <div className="text-xs text-gray-400">Active</div>
                  </div>
                </div>
 
@@ -1377,7 +1368,7 @@ export default function Portfolio() {
                    <span className="text-white font-medium text-sm">2025 Activity</span>
                  </div>
                  <p className="text-gray-300 text-sm leading-relaxed mb-3">
-                   Strong start to 2025 with consistent contributions across various projects and technologies.
+                   Strong start to 2025 with advanced SRE tooling, alerting systems, and monitoring optimizations.
                  </p>
                  
                  {/* Mobile Top Languages */}
@@ -1385,12 +1376,15 @@ export default function Portfolio() {
                    {githubData[2025].topLanguages.slice(0, 4).map((language, index) => (
                      <span 
                        key={language}
-                       className={`px-2 py-1 rounded text-xs font-medium
-                         ${index === 0 ? 'bg-blue-600 text-white' : ''}
-                         ${index === 1 ? 'bg-green-600 text-white' : ''}
-                         ${index === 2 ? 'bg-purple-600 text-white' : ''}
-                         ${index === 3 ? 'bg-orange-600 text-white' : ''}
+                       className={`px-2 py-1 rounded text-xs font-medium transform hover:scale-105 transition-all duration-200 cursor-default
+                         ${index === 0 ? 'bg-blue-600 text-white animate-fade-in-up' : ''}
+                         ${index === 1 ? 'bg-green-600 text-white animate-fade-in-up' : ''}
+                         ${index === 2 ? 'bg-purple-600 text-white animate-fade-in-up' : ''}
+                         ${index === 3 ? 'bg-orange-600 text-white animate-fade-in-up' : ''}
                        `}
+                       style={{
+                         animationDelay: `${index * 100}ms`
+                       }}
                      >
                        {language}
                      </span>
