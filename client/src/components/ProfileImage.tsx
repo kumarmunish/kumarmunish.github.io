@@ -7,14 +7,20 @@ interface ProfileImageProps {
 
 export default function ProfileImage({ className = "", alt = "Munish Kumar - Site Reliability Engineer" }: ProfileImageProps) {
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative aspect-square overflow-hidden rounded-full ${className}`}>
       <img 
         src={originalImage}
-        alt={alt} loading="lazy"
-        className="w-full h-full object-cover rounded-full shadow-2xl ring-4 ring-blue-500/20 dark:ring-blue-400/30"
+        alt={alt}
+        loading="lazy"
+        className="w-full h-full object-cover object-center rounded-full"
+        style={{ 
+          aspectRatio: "1 / 1",
+          transform: "scale(1.3)",
+          transformOrigin: "center center"
+        }}
       />
-      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-600/10 dark:from-blue-400/5 dark:to-purple-500/5"></div>
-      <div className="absolute inset-0 rounded-full border-2 border-blue-500/30 dark:border-blue-400/20"></div>
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/10 to-purple-600/10 dark:from-blue-400/5 dark:to-purple-500/5 pointer-events-none"></div>
+      <div className="absolute inset-0 rounded-full border-2 border-blue-500/30 dark:border-blue-400/20 pointer-events-none"></div>
     </div>
   );
 }

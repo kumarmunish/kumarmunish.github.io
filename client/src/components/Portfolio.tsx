@@ -151,38 +151,45 @@ export default function Portfolio() {
       commits: 398,
       streak: 12,
       contributions: 588,
-      topLanguages: ['TypeScript', 'Python', 'Go', 'YAML'],
-      activity: 'Exceptional start to 2025 with advanced SRE tooling focused on alerting systems, comprehensive monitoring setup, and infrastructure optimizations for enhanced reliability.',
-      activityLevel: 0.95
+      topLanguages: ["TypeScript", "Python", "Go", "YAML"],
+      activity:
+        "Exceptional start to 2025 with advanced SRE tooling focused on alerting systems, comprehensive monitoring setup, and infrastructure optimizations for enhanced reliability.",
+      activityLevel: 0.95,
     },
     2024: {
       commits: 512,
       streak: 31,
       contributions: 794,
-      topLanguages: ['Python', 'Go', 'YAML', 'Shell'],
-      activity: 'Outstanding year with infrastructure automation, GitHub Actions workflows, and production system optimizations.',
-      activityLevel: 0.85
+      topLanguages: ["Python", "Go", "YAML", "Shell"],
+      activity:
+        "Outstanding year with infrastructure automation, GitHub Actions workflows, and production system optimizations.",
+      activityLevel: 0.85,
     },
     2023: {
       commits: 234,
       streak: 18,
       contributions: 361,
-      topLanguages: ['Python', 'Terraform', 'Docker', 'Go'],
-      activity: 'Strategic focus on quality over quantity with Kubernetes deployments and cloud infrastructure at Maersk.',
-      activityLevel: 0.6
+      topLanguages: ["Python", "Terraform", "Docker", "Go"],
+      activity:
+        "Strategic focus on quality over quantity with Kubernetes deployments and cloud infrastructure at Maersk.",
+      activityLevel: 0.6,
     },
     2022: {
       commits: 687,
       streak: 42,
       contributions: 1058,
-      topLanguages: ['Python', 'Shell', 'YAML', 'Dockerfile'],
-      activity: 'Peak productivity year with massive Infrastructure as Code projects, monitoring solutions, and DevOps automation.',
-      activityLevel: 1.0
-    }
+      topLanguages: ["Python", "Shell", "YAML", "Dockerfile"],
+      activity:
+        "Peak productivity year with massive Infrastructure as Code projects, monitoring solutions, and DevOps automation.",
+      activityLevel: 1.0,
+    },
   };
 
-  const currentYearData = githubData[selectedYear as keyof typeof githubData] || githubData[2025];
-  const availableYears = Object.keys(githubData).map(Number).sort((a, b) => b - a);
+  const currentYearData =
+    githubData[selectedYear as keyof typeof githubData] || githubData[2025];
+  const availableYears = Object.keys(githubData)
+    .map(Number)
+    .sort((a, b) => b - a);
 
   const workExperience = [
     {
@@ -325,17 +332,17 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       {/* Header */}
-      <header 
+      <header
         className="fixed top-0 left-0 right-0 w-full bg-white dark:bg-gray-900 z-50 border-b border-gray-200 dark:border-gray-800 shadow-lg"
-        style={{ 
-          position: 'fixed',
+        style={{
+          position: "fixed",
           top: 0,
           left: 0,
           right: 0,
           zIndex: 50,
-          transform: 'translate3d(0,0,0)',
-          backfaceVisibility: 'hidden',
-          WebkitBackfaceVisibility: 'hidden'
+          transform: "translate3d(0,0,0)",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
         }}
       >
         <div className="max-w-7xl mx-auto">
@@ -357,7 +364,7 @@ export default function Portfolio() {
               </button>
             </div>
 
-                          {/* Right side - Navigation & Controls */}
+            {/* Right side - Navigation & Controls */}
             <div className="flex items-center">
               {/* Desktop Navigation */}
               <nav className="hidden lg:flex items-center space-x-8 mr-6">
@@ -426,17 +433,19 @@ export default function Portfolio() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[60] lg:hidden">
           {/* Backdrop */}
-          <div 
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm" 
+          <div
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          
+
           {/* Menu Panel */}
           <div className="fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-900 shadow-xl border-l border-gray-200 dark:border-gray-800">
             <div className="flex flex-col h-full">
               {/* Header */}
               <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Menu</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  Menu
+                </h3>
                 <Button
                   variant="outline"
                   size="icon"
@@ -446,7 +455,7 @@ export default function Portfolio() {
                   <X className="h-4 w-4" />
                 </Button>
               </div>
-              
+
               {/* Navigation Links */}
               <nav className="flex-1 p-4">
                 <div className="space-y-2">
@@ -494,7 +503,10 @@ export default function Portfolio() {
       )}
 
       {/* Hero Section */}
-      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8" style={{ paddingTop: '6rem' }}>
+      <section
+        className="pt-24 pb-20 px-4 sm:px-6 lg:px-8"
+        style={{ paddingTop: "6rem" }}
+      >
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12">
             {/* Profile Image */}
@@ -509,14 +521,14 @@ export default function Portfolio() {
               </h2>
               <div className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">
                 <p className="mb-4">
-                  I’m a Site Reliability Engineer with a background in QA and a
-                  deep interest in how systems behave - especially in
-                  production. I care about building systems that are observable,
-                  scalable, and resilient. I began my journey as a QA engineer,
-                  working closely with backend teams to ensure stability and
-                  quality across rapid release cycles. Over time, I became
-                  fascinated with how systems break, recover, and scale - which
-                  naturally led me into SRE.
+                  I’m a Site Reliability Engineer with a deep interest in how
+                  systems behave - especially in production. I care about
+                  building systems that are observable, scalable, and resilient.
+                  I began my journey as a QA engineer, working closely with
+                  backend teams to ensure stability and quality across rapid
+                  release cycles. Over time, I became fascinated with how
+                  systems break, recover, and scale - which naturally led me
+                  into SRE.
                 </p>
                 <p>
                   Today, With over 8 years of experience spanning QA, DevOps,
@@ -532,8 +544,6 @@ export default function Portfolio() {
                   I've taken myself.
                 </p>
               </div>
-
-              
             </div>
           </div>
         </div>
@@ -1034,367 +1044,506 @@ export default function Portfolio() {
         </div>
       </section>
 
-             {/* GitHub Activity Section */}
-       <section id="github" className="py-12 sm:py-20 px-3 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
-         <div className="max-w-6xl mx-auto">
-           <div className="text-center mb-6 sm:mb-8">
-             <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
-               GitHub Activity
-             </h2>
-             <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-lg px-2 sm:px-0">
-               Real-time GitHub contributions showing my latest coding activity and project development.
-             </p>
-           </div>
+      {/* GitHub Activity Section */}
+      <section
+        id="github"
+        className="py-12 sm:py-20 px-3 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800"
+      >
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
+              GitHub Activity
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-lg px-2 sm:px-0">
+              Real-time GitHub contributions showing my latest coding activity
+              and project development.
+            </p>
+          </div>
 
-           {/* Desktop GitHub Activity Card */}
-           <div className="hidden sm:block bg-gray-900 dark:bg-gray-950 rounded-2xl shadow-lg animate-slide-in-left">
-               <div className="p-6 lg:p-8">
-                 {/* Profile Header */}
-                 <div className="flex items-center justify-between mb-8">
-                   <a
-                     href="https://github.com/kumarmunish"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="flex items-center space-x-4 hover:bg-gray-800 rounded-lg p-2 transition-colors cursor-pointer"
-                   >
-                     <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center">
-                       <Github className="w-8 h-8 text-white" />
-                     </div>
-                     <div>
-                       <h3 className="text-2xl font-bold text-white hover:text-blue-400 transition-colors">Munish Kumar</h3>
-                       <p className="text-gray-400 hover:text-blue-300 transition-colors">@kumarmunish</p>
-                     </div>
-                   </a>
-                   <div className="text-right">
-                     <div className="flex items-center justify-end space-x-2">
-                       <div className="text-center">
-                         <Github className="w-6 h-6 text-white mx-auto mb-1" />
-                         <p className="text-gray-400 text-sm">10 Years</p>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
+          {/* Desktop GitHub Activity Card */}
+          <div className="hidden sm:block bg-gray-900 dark:bg-gray-950 rounded-2xl shadow-lg animate-slide-in-left">
+            <div className="p-6 lg:p-8">
+              {/* Profile Header */}
+              <div className="flex items-center justify-between mb-8">
+                <a
+                  href="https://github.com/kumarmunish"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-4 hover:bg-gray-800 rounded-lg p-2 transition-colors cursor-pointer"
+                >
+                  <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center">
+                    <Github className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white hover:text-blue-400 transition-colors">
+                      Munish Kumar
+                    </h3>
+                    <p className="text-gray-400 hover:text-blue-300 transition-colors">
+                      @kumarmunish
+                    </p>
+                  </div>
+                </a>
+                <div className="text-right">
+                  <div className="flex items-center justify-end space-x-2">
+                    <div className="text-center">
+                      <Github className="w-6 h-6 text-white mx-auto mb-1" />
+                      <p className="text-gray-400 text-sm">10 Years</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-                 {/* Year Selector */}
-                 <div className="mb-8">
-                   <div className="flex items-center justify-between mb-6">
-                     <div>
-                       <span className="text-white font-semibold">GitHub Activity</span>
-                       <span className="text-gray-400 ml-4">Year Overview</span>
-                     </div>
-                     <div className="flex bg-gray-800 rounded-lg p-1">
-                       {availableYears.map((year) => (
-                         <button
-                           key={year}
-                           onClick={() => setSelectedYear(year)}
-                           className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                             selectedYear === year
-                               ? 'bg-blue-600 text-white shadow-lg'
-                               : 'text-gray-400 hover:text-white hover:bg-gray-700'
-                           }`}
-                         >
-                           {year}
-                         </button>
-                       ))}
-                     </div>
-                   </div>
+              {/* Year Selector */}
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-6">
+                  <div>
+                    <span className="text-white font-semibold">
+                      GitHub Activity
+                    </span>
+                    <span className="text-gray-400 ml-4">Year Overview</span>
+                  </div>
+                  <div className="flex bg-gray-800 rounded-lg p-1">
+                    {availableYears.map((year) => (
+                      <button
+                        key={year}
+                        onClick={() => setSelectedYear(year)}
+                        className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                          selectedYear === year
+                            ? "bg-blue-600 text-white shadow-lg"
+                            : "text-gray-400 hover:text-white hover:bg-gray-700"
+                        }`}
+                      >
+                        {year}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-                   {/* Activity Summary */}
-                   <div className="flex items-center justify-between mb-4">
-                     <div>
-                       <span className="text-white font-semibold">{selectedYear}</span>
-                       <span className="text-gray-400 ml-4">{currentYearData.contributions} Contributions</span>
-                     </div>
-                   </div>
-                 </div>
+                {/* Activity Summary */}
+                <div className="flex items-center justify-between mb-4">
+                  <div>
+                    <span className="text-white font-semibold">
+                      {selectedYear}
+                    </span>
+                    <span className="text-gray-400 ml-4">
+                      {currentYearData.contributions} Contributions
+                    </span>
+                  </div>
+                </div>
+              </div>
 
-                 {/* Desktop Contribution Graph */}
-                 <div className="mb-8">
-                   <div className="bg-gray-800 rounded-lg p-6 transition-all duration-500">
-                     <div className="grid grid-cols-12 gap-1 mb-4">
-                       {['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].map((month) => (
-                         <div key={month} className="text-gray-400 text-xs text-center">{month}</div>
-                       ))}
-                     </div>
-                     
-                     {/* Week Grid */}
-                     <div className="space-y-1">
-                       {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day, dayIndex) => (
-                         <div key={day} className="flex items-center space-x-1">
-                           <span className="text-gray-400 text-xs w-8">{dayIndex % 2 === 0 ? day : ''}</span>
-                           <div className="flex space-x-1 flex-1">
-                             {Array.from({ length: 53 }, (_, weekIndex) => {
-                               // Enhanced activity patterns with better Nov/Dec coverage
-                               let activity = 0;
-                               
-                               if (selectedYear === 2025) {
-                                 // Activity only through July 2025 (future months show no activity)
-                                 if (weekIndex < 20) {
-                                   activity = Math.random() < 0.3 ? 0 : Math.random() * 0.9; // Jan-May
-                                 } else if (weekIndex < 30) {
-                                   activity = Math.random() < 0.4 ? 0 : Math.random() * 0.7; // Jun-July
-                                 } else {
-                                   activity = 0; // Aug-Dec (future months - no activity)
-                                 }
-                               } else if (selectedYear === 2024) {
-                                 activity = Math.random() < 0.45 ? 0 : Math.random() * 0.75;
-                               } else if (selectedYear === 2023) {
-                                 const concentratedWeeks = [8, 9, 15, 16, 35, 36, 48, 49];
-                                 if (concentratedWeeks.includes(weekIndex)) {
-                                   activity = Math.random() < 0.2 ? 0 : Math.random() * 0.9;
-                                 } else {
-                                   activity = Math.random() < 0.75 ? 0 : Math.random() * 0.5;
-                                 }
-                               } else if (selectedYear === 2022) {
-                                 if (weekIndex > 25) {
-                                   activity = Math.random() < 0.15 ? 0 : 0.4 + Math.random() * 0.6; // Better second half
-                                 } else {
-                                   activity = Math.random() < 0.5 ? 0 : Math.random() * 0.6;
-                                 }
-                               }
-                               
-                               // Reduce weekend activity but don't eliminate
-                               if (dayIndex === 0 || dayIndex === 6) {
-                                 activity *= 0.4;
-                               }
-                               
-                               // Less aggressive empty stretches
-                               if (Math.random() < 0.05) {
-                                 activity = 0;
-                               }
-                               
-                               let bgColor = 'bg-gray-700';
-                               let intensity = 'No activity';
-                               
-                               if (activity > 0.8) {
-                                 bgColor = 'bg-green-400';
-                                 intensity = 'Very high activity';
-                               } else if (activity > 0.6) {
-                                 bgColor = 'bg-green-500';
-                                 intensity = 'High activity';
-                               } else if (activity > 0.4) {
-                                 bgColor = 'bg-green-600';
-                                 intensity = 'Medium activity';
-                               } else if (activity > 0.2) {
-                                 bgColor = 'bg-green-700';
-                                 intensity = 'Low activity';
-                               } else if (activity > 0.05) {
-                                 bgColor = 'bg-green-800';
-                                 intensity = 'Minimal activity';
-                               }
-                               
-                               const date = new Date(selectedYear, 0, 1 + weekIndex * 7 + dayIndex);
-                               const formattedDate = date.toLocaleDateString();
-                               
-                                                                return (
-                                   <div
-                                     key={`${selectedYear}-${weekIndex}-${dayIndex}`}
-                                     className={`w-3 h-3 rounded-sm ${bgColor} hover:scale-125 hover:shadow-lg transition-all duration-300 cursor-pointer hover:z-10 relative`}
-                                     title={`${intensity} on ${formattedDate}`}
-                                     style={{
-                                       width: `calc((100% - ${52 * 4}px) / 53)`,
-                                       minWidth: '10px'
-                                     }}
-                                   />
-                                 );
-                             })}
-                           </div>
-                         </div>
-                       ))}
-                     </div>
-                     
-                     {/* Legend */}
-                     <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
-                       <span className="text-gray-400 text-xs">Less</span>
-                       <div className="flex space-x-1">
-                         <div className="w-3 h-3 bg-gray-700 rounded-sm"></div>
-                         <div className="w-3 h-3 bg-green-700 rounded-sm"></div>
-                         <div className="w-3 h-3 bg-green-600 rounded-sm"></div>
-                         <div className="w-3 h-3 bg-green-500 rounded-sm"></div>
-                         <div className="w-3 h-3 bg-green-400 rounded-sm"></div>
-                       </div>
-                       <span className="text-gray-400 text-xs">More</span>
-                     </div>
-                   </div>
-                 </div>
+              {/* Desktop Contribution Graph */}
+              <div className="mb-8">
+                <div className="bg-gray-800 rounded-lg p-6 transition-all duration-500">
+                  <div className="grid grid-cols-12 gap-1 mb-4">
+                    {[
+                      "Jan",
+                      "Feb",
+                      "Mar",
+                      "Apr",
+                      "May",
+                      "Jun",
+                      "Jul",
+                      "Aug",
+                      "Sep",
+                      "Oct",
+                      "Nov",
+                      "Dec",
+                    ].map((month) => (
+                      <div
+                        key={month}
+                        className="text-gray-400 text-xs text-center"
+                      >
+                        {month}
+                      </div>
+                    ))}
+                  </div>
 
-                 {/* Desktop Statistics Cards */}
-                 <div className="grid grid-cols-3 gap-6 mb-8">
-                   {/* Contributions */}
-                   <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl animate-bounce-in animate-glow">
-                     <div className="flex items-center space-x-3">
-                       <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
-                         <Terminal className="w-6 h-6 text-white" />
-                       </div>
-                       <div>
-                         <div className="text-2xl font-bold text-gray-900">{currentYearData.commits}</div>
-                         <div className="text-gray-600 text-sm">Commits in {selectedYear}</div>
-                       </div>
-                     </div>
-                   </div>
+                  {/* Week Grid */}
+                  <div className="space-y-1">
+                    {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(
+                      (day, dayIndex) => (
+                        <div key={day} className="flex items-center space-x-1">
+                          <span className="text-gray-400 text-xs w-8">
+                            {dayIndex % 2 === 0 ? day : ""}
+                          </span>
+                          <div className="flex space-x-1 flex-1">
+                            {Array.from({ length: 53 }, (_, weekIndex) => {
+                              // Enhanced activity patterns with better Nov/Dec coverage
+                              let activity = 0;
 
-                   {/* Current Streak */}
-                   <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl animate-bounce-in animation-delay-200">
-                     <div className="flex items-center space-x-3">
-                       <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
-                         <Rocket className="w-6 h-6 text-white" />
-                       </div>
-                       <div>
-                         <div className="text-2xl font-bold text-gray-900">{currentYearData.streak}</div>
-                         <div className="text-gray-600 text-sm">Best Streak ({selectedYear})</div>
-                       </div>
-                     </div>
-                   </div>
+                              if (selectedYear === 2025) {
+                                // Activity only through July 2025 (future months show no activity)
+                                if (weekIndex < 20) {
+                                  activity =
+                                    Math.random() < 0.3
+                                      ? 0
+                                      : Math.random() * 0.9; // Jan-May
+                                } else if (weekIndex < 30) {
+                                  activity =
+                                    Math.random() < 0.4
+                                      ? 0
+                                      : Math.random() * 0.7; // Jun-July
+                                } else {
+                                  activity = 0; // Aug-Dec (future months - no activity)
+                                }
+                              } else if (selectedYear === 2024) {
+                                activity =
+                                  Math.random() < 0.45
+                                    ? 0
+                                    : Math.random() * 0.75;
+                              } else if (selectedYear === 2023) {
+                                const concentratedWeeks = [
+                                  8, 9, 15, 16, 35, 36, 48, 49,
+                                ];
+                                if (concentratedWeeks.includes(weekIndex)) {
+                                  activity =
+                                    Math.random() < 0.2
+                                      ? 0
+                                      : Math.random() * 0.9;
+                                } else {
+                                  activity =
+                                    Math.random() < 0.75
+                                      ? 0
+                                      : Math.random() * 0.5;
+                                }
+                              } else if (selectedYear === 2022) {
+                                if (weekIndex > 25) {
+                                  activity =
+                                    Math.random() < 0.15
+                                      ? 0
+                                      : 0.4 + Math.random() * 0.6; // Better second half
+                                } else {
+                                  activity =
+                                    Math.random() < 0.5
+                                      ? 0
+                                      : Math.random() * 0.6;
+                                }
+                              }
 
-                   {/* Total Contributions */}
-                   <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-lg animate-fade-in-up" style={{ animationDelay: '200ms' }}>
-                     <div className="flex items-center space-x-3">
-                       <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
-                         <Trophy className="w-6 h-6 text-white" />
-                       </div>
-                       <div>
-                         <div className="text-2xl font-bold text-gray-900">{currentYearData.contributions}</div>
-                         <div className="text-gray-600 text-sm">Total Contributions</div>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
+                              // Reduce weekend activity but don't eliminate
+                              if (dayIndex === 0 || dayIndex === 6) {
+                                activity *= 0.4;
+                              }
 
-                 {/* Desktop Recent Activity */}
-                 <div className="bg-white dark:bg-gray-100 rounded-xl p-6">
-                   <div className="flex items-center space-x-3 mb-4">
-                     <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
-                       <Code className="w-5 h-5 text-white" />
-                     </div>
-                     <h4 className="text-xl font-semibold text-gray-900">{selectedYear} Activity Overview</h4>
-                   </div>
-                   
-                   <p className="text-gray-700 leading-relaxed mb-4">
-                     {currentYearData.activity}
-                   </p>
+                              // Less aggressive empty stretches
+                              if (Math.random() < 0.05) {
+                                activity = 0;
+                              }
 
-                   {/* Top Languages */}
-                   <div className="mb-6">
-                     <div className="flex flex-wrap gap-2">
-                       {currentYearData.topLanguages.map((language, index) => (
-                         <Badge 
-                           key={language}
-                           variant="secondary" 
-                           className={`
+                              let bgColor = "bg-gray-700";
+                              let intensity = "No activity";
+
+                              if (activity > 0.8) {
+                                bgColor = "bg-green-400";
+                                intensity = "Very high activity";
+                              } else if (activity > 0.6) {
+                                bgColor = "bg-green-500";
+                                intensity = "High activity";
+                              } else if (activity > 0.4) {
+                                bgColor = "bg-green-600";
+                                intensity = "Medium activity";
+                              } else if (activity > 0.2) {
+                                bgColor = "bg-green-700";
+                                intensity = "Low activity";
+                              } else if (activity > 0.05) {
+                                bgColor = "bg-green-800";
+                                intensity = "Minimal activity";
+                              }
+
+                              const date = new Date(
+                                selectedYear,
+                                0,
+                                1 + weekIndex * 7 + dayIndex
+                              );
+                              const formattedDate = date.toLocaleDateString();
+
+                              return (
+                                <div
+                                  key={`${selectedYear}-${weekIndex}-${dayIndex}`}
+                                  className={`w-3 h-3 rounded-sm ${bgColor} hover:scale-125 hover:shadow-lg transition-all duration-300 cursor-pointer hover:z-10 relative`}
+                                  title={`${intensity} on ${formattedDate}`}
+                                  style={{
+                                    width: `calc((100% - ${52 * 4}px) / 53)`,
+                                    minWidth: "10px",
+                                  }}
+                                />
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )
+                    )}
+                  </div>
+
+                  {/* Legend */}
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-700">
+                    <span className="text-gray-400 text-xs">Less</span>
+                    <div className="flex space-x-1">
+                      <div className="w-3 h-3 bg-gray-700 rounded-sm"></div>
+                      <div className="w-3 h-3 bg-green-700 rounded-sm"></div>
+                      <div className="w-3 h-3 bg-green-600 rounded-sm"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-sm"></div>
+                      <div className="w-3 h-3 bg-green-400 rounded-sm"></div>
+                    </div>
+                    <span className="text-gray-400 text-xs">More</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop Statistics Cards */}
+              <div className="grid grid-cols-3 gap-6 mb-8">
+                {/* Contributions */}
+                <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl animate-bounce-in animate-glow">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
+                      <Terminal className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-gray-900">
+                        {currentYearData.commits}
+                      </div>
+                      <div className="text-gray-600 text-sm">
+                        Commits in {selectedYear}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Current Streak */}
+                <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl animate-bounce-in animation-delay-200">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                      <Rocket className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-gray-900">
+                        {currentYearData.streak}
+                      </div>
+                      <div className="text-gray-600 text-sm">
+                        Best Streak ({selectedYear})
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Total Contributions */}
+                <div
+                  className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-lg animate-fade-in-up"
+                  style={{ animationDelay: "200ms" }}
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+                      <Trophy className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-gray-900">
+                        {currentYearData.contributions}
+                      </div>
+                      <div className="text-gray-600 text-sm">
+                        Total Contributions
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Desktop Recent Activity */}
+              <div className="bg-white dark:bg-gray-100 rounded-xl p-6">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                    <Code className="w-5 h-5 text-white" />
+                  </div>
+                  <h4 className="text-xl font-semibold text-gray-900">
+                    {selectedYear} Activity Overview
+                  </h4>
+                </div>
+
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  {currentYearData.activity}
+                </p>
+
+                {/* Top Languages */}
+                <div className="mb-6">
+                  <div className="flex flex-wrap gap-2">
+                    {currentYearData.topLanguages.map((language, index) => (
+                      <Badge
+                        key={language}
+                        variant="secondary"
+                        className={`
                              transform hover:scale-105 transition-all duration-200 cursor-default
-                             ${index === 0 ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 animate-fade-in-up' : ''}
-                             ${index === 1 ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 animate-fade-in-up animation-delay-100' : ''}
-                             ${index === 2 ? 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 animate-fade-in-up animation-delay-200' : ''}
-                             ${index === 3 ? 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 animate-fade-in-up animation-delay-300' : ''}
+                             ${
+                               index === 0
+                                 ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 animate-fade-in-up"
+                                 : ""
+                             }
+                             ${
+                               index === 1
+                                 ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 animate-fade-in-up animation-delay-100"
+                                 : ""
+                             }
+                             ${
+                               index === 2
+                                 ? "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 animate-fade-in-up animation-delay-200"
+                                 : ""
+                             }
+                             ${
+                               index === 3
+                                 ? "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200 animate-fade-in-up animation-delay-300"
+                                 : ""
+                             }
                            `}
-                           style={{
-                             animationDelay: `${index * 100}ms`
-                           }}
-                         >
-                           {language}
-                         </Badge>
-                       ))}
-                     </div>
-                   </div>
-                   
-                   {/* Activity Metrics */}
-                   <div className="grid grid-cols-4 gap-4 p-4 bg-gray-50 dark:bg-gray-200 rounded-lg">
-                     <div className="text-center">
-                       <div className="text-lg font-bold text-gray-900">{currentYearData.commits}</div>
-                       <div className="text-xs text-gray-600">Commits</div>
-                     </div>
-                     <div className="text-center">
-                       <div className="text-lg font-bold text-gray-900">{currentYearData.contributions}</div>
-                       <div className="text-xs text-gray-600">Contributions</div>
-                     </div>
-                     <div className="text-center">
-                       <div className="text-lg font-bold text-gray-900">{currentYearData.streak}</div>
-                       <div className="text-xs text-gray-600">Best Streak</div>
-                     </div>
-                     <div className="text-center">
-                       <div className="text-lg font-bold text-gray-900">{Math.round(currentYearData.activityLevel * 100)}%</div>
-                       <div className="text-xs text-gray-600">Activity</div>
-                     </div>
-                   </div>
-                 </div>
-             </div>
-           </div>
+                        style={{
+                          animationDelay: `${index * 100}ms`,
+                        }}
+                      >
+                        {language}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
 
-           {/* Mobile GitHub Activity Card */}
-           <div className="sm:hidden bg-gray-900 rounded-xl shadow-lg overflow-hidden animate-slide-in-right">
-             <div className="p-4">
-               {/* Mobile Profile Header */}
-               <a
-                 href="https://github.com/kumarmunish"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="flex items-center space-x-3 hover:bg-gray-800 rounded-lg p-2 transition-colors cursor-pointer mb-4"
-               >
-                 <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
-                   <Github className="w-5 h-5 text-white" />
-                 </div>
-                 <div className="flex-1 min-w-0">
-                   <h3 className="text-lg font-bold text-white truncate">Munish Kumar</h3>
-                   <p className="text-gray-400 text-sm">@kumarmunish</p>
-                 </div>
-                 <div className="text-right">
-                   <div className="text-center">
-                     <Github className="w-4 h-4 text-white mx-auto mb-1" />
-                     <div className="text-xs text-gray-400">10 Years</div>
-                   </div>
-                 </div>
-               </a>
+                {/* Activity Metrics */}
+                <div className="grid grid-cols-4 gap-4 p-4 bg-gray-50 dark:bg-gray-200 rounded-lg">
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-gray-900">
+                      {currentYearData.commits}
+                    </div>
+                    <div className="text-xs text-gray-600">Commits</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-gray-900">
+                      {currentYearData.contributions}
+                    </div>
+                    <div className="text-xs text-gray-600">Contributions</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-gray-900">
+                      {currentYearData.streak}
+                    </div>
+                    <div className="text-xs text-gray-600">Best Streak</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold text-gray-900">
+                      {Math.round(currentYearData.activityLevel * 100)}%
+                    </div>
+                    <div className="text-xs text-gray-600">Activity</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-               {/* Mobile Stats Grid */}
-               <div className="grid grid-cols-3 gap-3 mb-4">
-                 <div className="bg-gray-800 rounded-lg p-3 text-center transform hover:scale-105 transition-all duration-200 animate-fade-in-up">
-                   <div className="text-lg font-bold text-white">{githubData[2025].contributions}</div>
-                   <div className="text-xs text-gray-400">Contributions</div>
-                 </div>
-                 <div className="bg-gray-800 rounded-lg p-3 text-center transform hover:scale-105 transition-all duration-200 animate-fade-in-up" style={{ animationDelay: '50ms' }}>
-                   <div className="text-lg font-bold text-white">{githubData[2025].commits}</div>
-                   <div className="text-xs text-gray-400">Commits</div>
-                 </div>
-                 <div className="bg-gray-800 rounded-lg p-3 text-center transform hover:scale-105 transition-all duration-200 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-                   <div className="text-lg font-bold text-white">{githubData[2025].streak}</div>
-                   <div className="text-xs text-gray-400">Best Streak</div>
-                 </div>
-               </div>
+          {/* Mobile GitHub Activity Card */}
+          <div className="sm:hidden bg-gray-900 rounded-xl shadow-lg overflow-hidden animate-slide-in-right">
+            <div className="p-4">
+              {/* Mobile Profile Header */}
+              <a
+                href="https://github.com/kumarmunish"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 hover:bg-gray-800 rounded-lg p-2 transition-colors cursor-pointer mb-4"
+              >
+                <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center">
+                  <Github className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-bold text-white truncate">
+                    Munish Kumar
+                  </h3>
+                  <p className="text-gray-400 text-sm">@kumarmunish</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-center">
+                    <Github className="w-4 h-4 text-white mx-auto mb-1" />
+                    <div className="text-xs text-gray-400">10 Years</div>
+                  </div>
+                </div>
+              </a>
 
-               {/* Mobile Activity Summary */}
-               <div className="bg-gray-800 rounded-lg p-4">
-                 <div className="flex items-center space-x-2 mb-3">
-                   <Code className="w-4 h-4 text-blue-400" />
-                   <span className="text-white font-medium text-sm">2025 Activity</span>
-                 </div>
-                 <p className="text-gray-300 text-sm leading-relaxed mb-3">
-                   Strong start to 2025 with advanced SRE tooling, alerting systems, and monitoring optimizations.
-                 </p>
-                 
-                 {/* Mobile Top Languages */}
-                 <div className="flex flex-wrap gap-1">
-                   {githubData[2025].topLanguages.slice(0, 4).map((language, index) => (
-                     <span 
-                       key={language}
-                       className={`px-2 py-1 rounded text-xs font-medium transform hover:scale-105 transition-all duration-200 cursor-default
-                         ${index === 0 ? 'bg-blue-600 text-white animate-fade-in-up' : ''}
-                         ${index === 1 ? 'bg-green-600 text-white animate-fade-in-up' : ''}
-                         ${index === 2 ? 'bg-purple-600 text-white animate-fade-in-up' : ''}
-                         ${index === 3 ? 'bg-orange-600 text-white animate-fade-in-up' : ''}
+              {/* Mobile Stats Grid */}
+              <div className="grid grid-cols-3 gap-3 mb-4">
+                <div className="bg-gray-800 rounded-lg p-3 text-center transform hover:scale-105 transition-all duration-200 animate-fade-in-up">
+                  <div className="text-lg font-bold text-white">
+                    {githubData[2025].contributions}
+                  </div>
+                  <div className="text-xs text-gray-400">Contributions</div>
+                </div>
+                <div
+                  className="bg-gray-800 rounded-lg p-3 text-center transform hover:scale-105 transition-all duration-200 animate-fade-in-up"
+                  style={{ animationDelay: "50ms" }}
+                >
+                  <div className="text-lg font-bold text-white">
+                    {githubData[2025].commits}
+                  </div>
+                  <div className="text-xs text-gray-400">Commits</div>
+                </div>
+                <div
+                  className="bg-gray-800 rounded-lg p-3 text-center transform hover:scale-105 transition-all duration-200 animate-fade-in-up"
+                  style={{ animationDelay: "100ms" }}
+                >
+                  <div className="text-lg font-bold text-white">
+                    {githubData[2025].streak}
+                  </div>
+                  <div className="text-xs text-gray-400">Best Streak</div>
+                </div>
+              </div>
+
+              {/* Mobile Activity Summary */}
+              <div className="bg-gray-800 rounded-lg p-4">
+                <div className="flex items-center space-x-2 mb-3">
+                  <Code className="w-4 h-4 text-blue-400" />
+                  <span className="text-white font-medium text-sm">
+                    2025 Activity
+                  </span>
+                </div>
+                <p className="text-gray-300 text-sm leading-relaxed mb-3">
+                  Strong start to 2025 with advanced SRE tooling, alerting
+                  systems, and monitoring optimizations.
+                </p>
+
+                {/* Mobile Top Languages */}
+                <div className="flex flex-wrap gap-1">
+                  {githubData[2025].topLanguages
+                    .slice(0, 4)
+                    .map((language, index) => (
+                      <span
+                        key={language}
+                        className={`px-2 py-1 rounded text-xs font-medium transform hover:scale-105 transition-all duration-200 cursor-default
+                         ${
+                           index === 0
+                             ? "bg-blue-600 text-white animate-fade-in-up"
+                             : ""
+                         }
+                         ${
+                           index === 1
+                             ? "bg-green-600 text-white animate-fade-in-up"
+                             : ""
+                         }
+                         ${
+                           index === 2
+                             ? "bg-purple-600 text-white animate-fade-in-up"
+                             : ""
+                         }
+                         ${
+                           index === 3
+                             ? "bg-orange-600 text-white animate-fade-in-up"
+                             : ""
+                         }
                        `}
-                       style={{
-                         animationDelay: `${index * 100}ms`
-                       }}
-                     >
-                       {language}
-                     </span>
-                   ))}
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </section>
+                        style={{
+                          animationDelay: `${index * 100}ms`,
+                        }}
+                      >
+                        {language}
+                      </span>
+                    ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section */}
       <section
