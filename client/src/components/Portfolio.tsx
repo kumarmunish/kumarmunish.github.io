@@ -1293,8 +1293,8 @@ export default function Portfolio() {
 
               {/* Desktop Statistics Cards */}
               <div className="grid grid-cols-3 gap-6 mb-8">
-                {/* Contributions */}
-                <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl animate-bounce-in animate-glow">
+                {/* Commits */}
+                <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl">
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
                       <Terminal className="w-6 h-6 text-white" />
@@ -1310,8 +1310,8 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Current Streak */}
-                <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl animate-bounce-in animation-delay-200">
+                {/* Best Streak */}
+                <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-110 transition-all duration-300 hover:shadow-2xl">
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
                       <Rocket className="w-6 h-6 text-white" />
@@ -1328,10 +1328,7 @@ export default function Portfolio() {
                 </div>
 
                 {/* Total Contributions */}
-                <div
-                  className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-lg animate-fade-in-up"
-                  style={{ animationDelay: "200ms" }}
-                >
+                <div className="bg-white dark:bg-gray-100 rounded-xl p-6 transform hover:scale-105 transition-all duration-300 hover:shadow-lg">
                   <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
                       <Trophy className="w-6 h-6 text-white" />
