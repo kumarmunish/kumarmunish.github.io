@@ -14,8 +14,6 @@ import MaerskIcon from "../assets/icons/maersk.webp";
 import ShuttlIcon from "../assets/icons/shuttl.webp";
 import TataIcon from "../assets/icons/tata1mg.webp";
 import FabIcon from "../assets/icons/fabfurnish.webp";
-import { User, FolderKanban, MailOpen } from "lucide-react";
-
 import {
   Moon,
   Sun,
@@ -25,31 +23,18 @@ import {
   Clipboard,
   Briefcase,
   Code,
-  GraduationCap,
   Trophy,
-  Warehouse,
-  Bus,
   BarChart3,
   Bot,
   Github,
   Linkedin,
-  ExternalLink,
-  ChartLine,
-  DollarSign,
   Rocket,
   ChevronDown,
   ChevronUp,
   Cloud,
   Database,
-  Monitor,
   Terminal,
-  Settings,
   Container,
-  ShieldCheck,
-  Ship,
-  Stethoscope,
-  Sofa,
-  Heart,
   Menu,
   X,
 } from "lucide-react";
@@ -63,15 +48,15 @@ import {
   SiGithubactions,
   SiPython,
   SiGo,
-  SiYaml,
   SiMysql,
-  SiGnubash,
   SiDatadog,
   SiGrafana,
   SiPrometheus,
-  SiElasticsearch,
+  SiNewrelic,
   SiRedis,
   SiPostgresql,
+  SiJenkins,
+  SiEnvoyproxy,
 } from "react-icons/si";
 
 export const MaerskOrgIcon = (
@@ -100,7 +85,7 @@ export default function Portfolio() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
-  
+
   // Typing animation state
   const [displayedText, setDisplayedText] = useState<string>("");
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -306,69 +291,201 @@ export default function Portfolio() {
     {
       category: "Cloud & Infrastructure",
       skills: [
-        { name: "AWS", icon: SiAmazon, color: "text-orange-500", experience: "Expert", years: "6+", description: "Expert in EC2, EKS, RDS, S3, CloudFormation, IAM, and cost optimization strategies. Architected multi-region deployments and implemented automated disaster recovery solutions." },
-        { name: "Azure", icon: Cloud, color: "text-blue-500", experience: "Advanced", years: "4+", description: "Proficient in AKS, Azure DevOps, Resource Groups, and ARM templates. Successfully migrated legacy applications to cloud-native architectures." },
-        { name: "Kubernetes", icon: SiKubernetes, color: "text-blue-600", experience: "Expert", years: "5+", description: "Deep expertise in cluster architecture, custom controllers, Helm charts, and production workload management. Managed 50+ microservices across multiple environments." },
-        { name: "Docker", icon: SiDocker, color: "text-blue-400", experience: "Expert", years: "6+", description: "Advanced containerization techniques, multi-stage builds, image optimization, and security scanning. Reduced image sizes by 70% and improved deployment speed." },
-        { name: "Terraform", icon: SiTerraform, color: "text-purple-600", experience: "Expert", years: "5+", description: "Infrastructure as Code expert with custom modules, remote state management, and automated provisioning. Standardized infrastructure across 15+ environments." },
-        { name: "Ansible", icon: SiAnsible, color: "text-red-600", experience: "Advanced", years: "4+", description: "Configuration management and automation using playbooks, roles, and dynamic inventories. Automated server provisioning and application deployments." },
-        { name: "Linux", icon: SiLinux, color: "text-yellow-600", experience: "Expert", years: "8+", description: "System administration mastery including performance tuning, kernel optimization, network configuration, and security hardening across RHEL, Ubuntu, and CentOS." },
+        {
+          name: "AWS",
+          icon: SiAmazon,
+          color: "text-orange-500",
+          experience: "Expert",
+          years: "6+",
+          description:
+            "Expert in EC2, EKS, RDS, S3, CloudFormation, IAM, and cost optimization strategies. Architected multi-region deployments and implemented automated disaster recovery solutions.",
+        },
+        {
+          name: "Azure",
+          icon: Cloud,
+          color: "text-blue-500",
+          experience: "Advanced",
+          years: "4+",
+          description:
+            "Proficient in AKS, Azure DevOps, Resource Groups, and ARM templates. Successfully migrated legacy applications to cloud-native architectures.",
+        },
+        {
+          name: "Kubernetes",
+          icon: SiKubernetes,
+          color: "text-blue-600",
+          experience: "Expert",
+          years: "5+",
+          description:
+            "Deep expertise in cluster architecture, custom controllers, Helm charts, and production workload management. Managed 50+ microservices across multiple environments.",
+        },
+        {
+          name: "Docker",
+          icon: SiDocker,
+          color: "text-blue-400",
+          experience: "Expert",
+          years: "6+",
+          description:
+            "Advanced containerization techniques, multi-stage builds, image optimization, and security scanning. Reduced image sizes by 70% and improved deployment speed.",
+        },
+        {
+          name: "Terraform",
+          icon: SiTerraform,
+          color: "text-purple-600",
+          experience: "Expert",
+          years: "5+",
+          description:
+            "Infrastructure as Code expert with custom modules, remote state management, and automated provisioning. Standardized infrastructure across 15+ environments.",
+        },
+        {
+          name: "Ansible",
+          icon: SiAnsible,
+          color: "text-red-600",
+          experience: "Advanced",
+          years: "4+",
+          description:
+            "Configuration management and automation using playbooks, roles, and dynamic inventories. Automated server provisioning and application deployments.",
+        },
+        {
+          name: "Linux",
+          icon: SiLinux,
+          color: "text-yellow-600",
+          experience: "Expert",
+          years: "8+",
+          description:
+            "System administration mastery including performance tuning, kernel optimization, network configuration, and security hardening across RHEL, Ubuntu, and CentOS.",
+        },
+        {
+          name: "Envoy Proxy",
+          icon: SiEnvoyproxy,
+          color: "text-pink-500",
+          experience: "Intermediate",
+          years: "2+",
+          description:
+            "Service mesh and load balancing configuration, traffic management, and observability integration. Implemented API gateway patterns and circuit breaking for microservices architectures.",
+        },
+      ],
+    },
+    {
+      category: "Languages & CI/CD",
+      skills: [
+        {
+          name: "Python",
+          icon: SiPython,
+          color: "text-yellow-500",
+          experience: "Advanced",
+          years: "5+",
+          description:
+            "Infrastructure automation, REST APIs, data processing, and monitoring tools. Built custom deployment scripts and infrastructure management platforms.",
+        },
+        {
+          name: "Go",
+          icon: SiGo,
+          color: "text-blue-400",
+          experience: "Intermediate",
+          years: "2+",
+          description:
+            "Microservices development, CLI tools, and system utilities. Created high-performance monitoring agents and deployment automation tools.",
+        },
         {
           name: "GitHub Actions",
           icon: SiGithubactions,
           color: "text-gray-800 dark:text-gray-200",
           experience: "Expert",
           years: "4+",
-          description: "Advanced CI/CD pipeline design, custom actions development, matrix builds, and workflow optimization. Improved deployment success rates by 40%."
-        },
-      ],
-    },
-    {
-      category: "Programming",
-      skills: [
-        { name: "Python", icon: SiPython, color: "text-blue-500", experience: "Advanced", years: "5+", description: "Infrastructure automation, REST APIs, data processing, and monitoring tools. Built custom deployment scripts and infrastructure management platforms." },
-        { name: "Go", icon: SiGo, color: "text-blue-400", experience: "Intermediate", years: "2+", description: "Microservices development, CLI tools, and system utilities. Created high-performance monitoring agents and deployment automation tools." },
-        {
-          name: "Bash",
-          icon: SiGnubash,
-          color: "text-gray-700 dark:text-gray-300",
-          experience: "Expert",
-          years: "8+",
-          description: "Advanced shell scripting for system automation, deployment pipelines, and monitoring solutions. Automated complex operational workflows and system maintenance tasks."
+          description:
+            "Advanced CI/CD pipeline design, custom actions development, matrix builds, and workflow optimization. Improved deployment success rates by 40%.",
         },
         {
-          name: "YAML",
-          icon: SiYaml,
-          color: "text-gray-700 dark:text-gray-300",
-          experience: "Expert",
-          years: "6+",
-          description: "Configuration management for Kubernetes manifests, CI/CD pipelines, Ansible playbooks, and infrastructure definitions. Standardized configuration across environments."
+          name: "Jenkins",
+          icon: SiJenkins,
+          color: "text-blue-600",
+          experience: "Advanced",
+          years: "3+",
+          description:
+            "Enterprise CI/CD pipeline design, pipeline as code, agent management, and plugin development. Automated complex build and deployment workflows across multiple environments.",
         },
       ],
     },
     {
       category: "Monitoring & Observability",
       skills: [
-        { name: "Datadog", icon: SiDatadog, color: "text-purple-600", experience: "Expert", years: "4+", description: "Full-stack observability implementation including APM, infrastructure monitoring, log management, and custom dashboards. Reduced MTTR by 30% through intelligent alerting." },
-        { name: "Grafana", icon: SiGrafana, color: "text-orange-500", experience: "Advanced", years: "5+", description: "Advanced dashboard design, alerting rules, and data visualization from multiple sources. Created 100+ production dashboards for system monitoring and business metrics." },
-        { name: "Prometheus", icon: SiPrometheus, color: "text-red-500", experience: "Advanced", years: "4+", description: "Metrics collection architecture, PromQL queries, alerting rules, and service discovery. Implemented comprehensive monitoring for distributed microservices." },
         {
-          name: "Elasticsearch",
-          icon: SiElasticsearch,
-          color: "text-yellow-500",
+          name: "Datadog",
+          icon: SiDatadog,
+          color: "text-purple-600",
+          experience: "Expert",
+          years: "4+",
+          description:
+            "Full-stack observability implementation including APM, infrastructure monitoring, log management, and custom dashboards. Reduced MTTR by 30% through intelligent alerting.",
+        },
+        {
+          name: "Grafana",
+          icon: SiGrafana,
+          color: "text-orange-500",
+          experience: "Advanced",
+          years: "5+",
+          description:
+            "Advanced dashboard design, alerting rules, and data visualization from multiple sources. Created 100+ production dashboards for system monitoring and business metrics.",
+        },
+        {
+          name: "Prometheus",
+          icon: SiPrometheus,
+          color: "text-red-500",
+          experience: "Advanced",
+          years: "4+",
+          description:
+            "Metrics collection architecture, PromQL queries, alerting rules, and service discovery. Implemented comprehensive monitoring for distributed microservices.",
+        },
+        {
+          name: "New Relic",
+          icon: SiNewrelic,
+          color: "text-green-500",
           experience: "Intermediate",
           years: "3+",
-          description: "Log aggregation, search optimization, index management, and cluster operations. Built centralized logging solutions for distributed applications."
+          description:
+            "Full-stack observability implementation including APM, infrastructure monitoring, log management, and custom dashboards.",
         },
       ],
     },
     {
       category: "Databases",
       skills: [
-        { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-600", experience: "Advanced", years: "5+", description: "Database administration, query optimization, replication setup, and backup strategies. Implemented high-availability clusters and performance tuning." },
-        { name: "SQL Server", icon: Database, color: "text-red-500", experience: "Intermediate", years: "3+", description: "Database management, performance optimization, backup/recovery procedures, and integration with application environments." },
-        { name: "MySQL", icon: SiMysql, color: "text-blue-400", experience: "Advanced", years: "4+", description: "Database design, optimization, master-slave replication, and high-availability configurations. Managed databases supporting millions of transactions daily." },
-        { name: "Redis", icon: SiRedis, color: "text-red-600", experience: "Advanced", years: "4+", description: "In-memory caching strategies, data structure optimization, cluster configuration, and performance tuning. Improved application response times by 60%." },
+        {
+          name: "PostgreSQL",
+          icon: SiPostgresql,
+          color: "text-blue-600",
+          experience: "Advanced",
+          years: "5+",
+          description:
+            "Database administration, query optimization, replication setup, and backup strategies. Implemented high-availability clusters and performance tuning.",
+        },
+        {
+          name: "SQL Server",
+          icon: Database,
+          color: "text-red-500",
+          experience: "Intermediate",
+          years: "3+",
+          description:
+            "Database management, performance optimization, backup/recovery procedures, and integration with application environments.",
+        },
+        {
+          name: "MySQL",
+          icon: SiMysql,
+          color: "text-blue-400",
+          experience: "Advanced",
+          years: "4+",
+          description:
+            "Database design, optimization, master-slave replication, and high-availability configurations. Managed databases supporting millions of transactions daily.",
+        },
+        {
+          name: "Redis",
+          icon: SiRedis,
+          color: "text-red-600",
+          experience: "Advanced",
+          years: "4+",
+          description:
+            "In-memory caching strategies, data structure optimization, cluster configuration, and performance tuning. Improved application response times by 60%.",
+        },
       ],
     },
   ];
@@ -570,39 +687,82 @@ export default function Portfolio() {
               </h2>
               <div className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">
                 <p className="mb-4">
-                  I’m a Site Reliability Engineer with a deep interest in how
-                  systems behave - especially in production. I care about
-                  building systems that are observable, scalable, and resilient.
-                  I began my journey as a QA engineer, working closely with
-                  backend teams to ensure stability and quality across rapid
-                  release cycles. Over time, I became fascinated with how
-                  systems break, recover, and scale - which naturally led me
-                  into SRE.
+                  I’m Munish — a Site Reliability Engineer, currently working at
+                  Maersk. I’m driven by curiosity about how systems behave in
+                  production and a passion for turning chaos into stability.
+                  Whether it’s reducing alert noise, building tools for smoother
+                  operations, or uncovering the “why” behind unexpected
+                  incidents, my goal is simple: empower teams to navigate
+                  production with confidence, not anxiety.
                 </p>
-                <p>
-                  Today, With over 8 years of experience spanning QA, DevOps,
-                  and SRE, I specialize in helping teams ship reliably, recover
-                  quickly, and operate production systems with confidence. My
-                  work focuses on building internal tools, defining SLOs,
-                  implementing CI/CD pipelines, enhancing observability, and
-                  optimizing infrastructure to reduce noise and boost velocity.
-                  I'm driven by the goal of improving production visibility and
-                  creating a calmer on-call experience. I thrive in high-trust,
-                  blameless environments and enjoy mentoring junior engineers -
-                  especially those transitioning into SRE or DevOps, a journey
-                  I've taken myself.
-                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <button
+                  onClick={() => scrollToSection("about")}
+                  className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                >
+                  Learn More About Me
+                </button>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="px-8 py-3 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-medium rounded-lg transition-colors duration-200"
+                >
+                  Get In Touch
+                </button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Profile Section */}
+      {/* About Me Section */}
       <section
-        id="profile"
+        id="about"
         className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800"
       >
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
+            About Me
+          </h2>
+
+          <div>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                I’m a Site Reliability Engineer with over 8 years of experience
+                across QA, DevOps, and SRE. My journey began as a QA engineer,
+                working side-by-side with backend teams to ensure product
+                stability and quality through rapid development cycles. That
+                hands-on exposure sparked a curiosity about how complex systems
+                behave — how they break, recover, and grow — which gradually led
+                me into the world of SRE.
+              </p>
+
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                I specialize in designing and operating reliable production
+                systems. My focus areas include building internal tooling,
+                defining and tracking SLOs, implementing modern CI/CD pipelines,
+                and extending observability to minimize alert fatigue and speed
+                up root cause identification. I’m passionate about simplifying
+                operations, boosting engineering velocity, and making on-call
+                more humane.
+              </p>
+
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                I thrive in high-trust, blameless environments where learning
+                from failure is encouraged. As someone who transitioned from QA
+                to SRE, I love mentoring engineers who are taking a similar
+                path, helping them gain confidence and build long-term skills.
+                Ultimately, I care about enabling teams to ship with confidence,
+                recover quickly, and foster a healthy, resilient engineering
+                culture.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Profile Section */}
+      <section id="profile" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
             Tech Profile
@@ -704,140 +864,76 @@ export default function Portfolio() {
                   Skills & Tech Stack
                 </h3>
                 <div className="space-y-8">
-                    {skillsData.map((category, categoryIndex) => (
-                      <div key={categoryIndex}>
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-lg">
-                          {category.category}
-                        </h4>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                          {category.skills.map((skill, skillIndex) => {
-                            const IconComponent = skill.icon;
-                            const getExperienceColor = (level: string) => {
-                              switch (level) {
-                                case "Expert": return "border-green-500 bg-green-50 dark:bg-green-900/20";
-                                case "Advanced": return "border-blue-500 bg-blue-50 dark:bg-blue-900/20";
-                                case "Intermediate": return "border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20";
-                                default: return "border-gray-300 bg-gray-50 dark:bg-gray-800";
+                  {skillsData.map((category, categoryIndex) => (
+                    <div key={categoryIndex}>
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-4 text-lg">
+                        {category.category}
+                      </h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {category.skills.map((skill, skillIndex) => {
+                          const IconComponent = skill.icon;
+                          const getExperienceColor = (level: string) => {
+                            switch (level) {
+                              case "Expert":
+                                return "border-green-500 bg-green-50 dark:bg-green-900/20";
+                              case "Advanced":
+                                return "border-blue-500 bg-blue-50 dark:bg-blue-900/20";
+                              case "Intermediate":
+                                return "border-yellow-500 bg-yellow-50 dark:bg-yellow-900/20";
+                              default:
+                                return "border-gray-300 bg-gray-50 dark:bg-gray-800";
+                            }
+                          };
+
+                          return (
+                            <div
+                              key={skillIndex}
+                              className={`flex flex-col items-center p-4 rounded-lg hover:scale-105 cursor-pointer group transition-all duration-200 border-2 ${
+                                selectedSkill === skill.name
+                                  ? getExperienceColor(skill.experience)
+                                  : "border-transparent bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
+                              }`}
+                              onClick={() =>
+                                setSelectedSkill(
+                                  selectedSkill === skill.name
+                                    ? null
+                                    : skill.name
+                                )
                               }
-                            };
-                            
-                            return (
-                              <div
-                                key={skillIndex}
-                                className={`flex flex-col items-center p-4 rounded-lg hover:scale-105 cursor-pointer group transition-all duration-200 border-2 ${
-                                  selectedSkill === skill.name 
-                                    ? getExperienceColor(skill.experience)
-                                    : "border-transparent bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700"
-                                }`}
-                                onClick={() => setSelectedSkill(selectedSkill === skill.name ? null : skill.name)}
-                              >
-                                <div className="mb-2 transition-transform duration-200 group-hover:scale-110">
-                                  <IconComponent
-                                    size={32}
-                                    className={`${skill.color} transition-colors duration-200`}
-                                  />
-                                </div>
-                                <span className="text-sm font-medium text-gray-900 dark:text-white text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
-                                  {skill.name}
-                                </span>
-                                {selectedSkill === skill.name && (
-                                  <div className="mt-2 text-center">
-                                    <div className={`text-xs font-semibold px-2 py-1 rounded-full ${
-                                      skill.experience === "Expert" ? "bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100" :
-                                      skill.experience === "Advanced" ? "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100" :
-                                      "bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100"
-                                    }`}>
-                                      {skill.experience}
-                                    </div>
-                                    <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                                      {skill.years} experience
-                                    </div>
-                                  </div>
-                                )}
+                            >
+                              <div className="mb-2 transition-transform duration-200 group-hover:scale-110">
+                                <IconComponent
+                                  size={32}
+                                  className={`${skill.color} transition-colors duration-200`}
+                                />
                               </div>
-                            );
-                          })}
-                        </div>
+                              <span className="text-sm font-medium text-gray-900 dark:text-white text-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
+                                {skill.name}
+                              </span>
+                              {selectedSkill === skill.name && (
+                                <div className="mt-2 text-center">
+                                  <div
+                                    className={`text-xs font-semibold px-2 py-1 rounded-full ${
+                                      skill.experience === "Expert"
+                                        ? "bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100"
+                                        : skill.experience === "Advanced"
+                                        ? "bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100"
+                                        : "bg-yellow-100 text-yellow-800 dark:bg-yellow-800 dark:text-yellow-100"
+                                    }`}
+                                  >
+                                    {skill.experience}
+                                  </div>
+                                  <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                                    {skill.years} experience
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
                       </div>
-                    ))}
-                  </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Education & Certifications */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
-            <Card className="bg-white dark:bg-gray-900 shadow-lg">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white flex items-center">
-                  <GraduationCap className="mr-3 text-blue-600" />
-                  Education
-                </h3>
-                <div className="border-l-4 border-blue-600 pl-4">
-                  <h4 className="font-semibold text-lg text-gray-900 dark:text-white">
-                    Bachelor of Technology
-                  </h4>
-                  <p className="text-blue-600 font-medium">
-                    Maharishi Dayanand University
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Rohtak, Haryana
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white dark:bg-gray-900 shadow-lg">
-              <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white flex items-center">
-                  <Trophy className="mr-3 text-blue-600" />
-                  Key Achievements
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <ChartLine
-                      className="text-green-600 mr-3 mt-1 flex-shrink-0"
-                      size={20}
-                    />
-                    <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">
-                        MTTR Improvement
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">
-                        Reduced Mean Time to Recovery for incidents by 30%
-                        through observability improvements
-                      </p>
                     </div>
-                  </div>
-                  <div className="flex items-start">
-                    <DollarSign
-                      className="text-green-600 mr-3 mt-1 flex-shrink-0"
-                      size={20}
-                    />
-                    <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">
-                        Cost Optimization
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">
-                        Cut cloud costs by 25% via rightsizing and monitoring
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
-                    <Rocket
-                      className="text-green-600 mr-3 mt-1 flex-shrink-0"
-                      size={20}
-                    />
-                    <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">
-                        Deployment Velocity
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-300 text-sm">
-                        Increased deployment velocity by 40% with CI/CD best
-                        practices{" "}
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
@@ -846,10 +942,10 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
-            Projects
+            Featured Projects
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -858,7 +954,10 @@ export default function Portfolio() {
               <CardContent className="p-8">
                 <div className="flex items-center mb-4">
                   <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <Code className="text-blue-600 dark:text-blue-400" size={32} />
+                    <Code
+                      className="text-blue-600 dark:text-blue-400"
+                      size={32}
+                    />
                   </div>
                   <div>
                     <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
@@ -866,24 +965,34 @@ export default function Portfolio() {
                     </h3>
                     <div className="flex items-center mt-1">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">Production Ready</span>
+                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+                        Production Ready
+                      </span>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Impact Metrics */}
                 <div className="grid grid-cols-3 gap-4 mb-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-blue-600">70%</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Time Saved</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Time Saved
+                    </div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-green-600">15+</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Environments</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Environments
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-600">99.9%</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Success Rate</div>
+                    <div className="text-2xl font-bold text-purple-600">
+                      99.9%
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Success Rate
+                    </div>
                   </div>
                 </div>
 
@@ -925,7 +1034,6 @@ export default function Portfolio() {
                     GitHub Actions
                   </Badge>
                 </div>
-
               </CardContent>
             </Card>
 
@@ -934,7 +1042,10 @@ export default function Portfolio() {
               <CardContent className="p-8">
                 <div className="flex items-center mb-4">
                   <div className="p-3 bg-red-100 dark:bg-red-900 rounded-lg mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <Container className="text-red-600 dark:text-red-400" size={32} />
+                    <Container
+                      className="text-red-600 dark:text-red-400"
+                      size={32}
+                    />
                   </div>
                   <div>
                     <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
@@ -942,31 +1053,44 @@ export default function Portfolio() {
                     </h3>
                     <div className="flex items-center mt-1">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">Enterprise Scale</span>
+                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+                        Enterprise Scale
+                      </span>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Impact Metrics */}
                 <div className="grid grid-cols-3 gap-4 mb-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-red-600">50+</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Microservices</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Microservices
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">99.95%</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Uptime</div>
+                    <div className="text-2xl font-bold text-green-600">
+                      99.95%
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Uptime
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-600">&lt;5min</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Avg Recovery</div>
+                    <div className="text-2xl font-bold text-purple-600">
+                      &lt;5min
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Avg Recovery
+                    </div>
                   </div>
                 </div>
 
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Designed, deployed, and managed production-grade Kubernetes
                   and Nomad clusters for running containerized microservices.
-                  Implemented automated deployment pipelines using GitHub Actions.
+                  Implemented automated deployment pipelines using GitHub
+                  Actions.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <Badge
@@ -1008,7 +1132,10 @@ export default function Portfolio() {
               <CardContent className="p-8">
                 <div className="flex items-center mb-4">
                   <div className="p-3 bg-yellow-100 dark:bg-yellow-900 rounded-lg mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <BarChart3 className="text-yellow-600 dark:text-yellow-400" size={32} />
+                    <BarChart3
+                      className="text-yellow-600 dark:text-yellow-400"
+                      size={32}
+                    />
                   </div>
                   <div>
                     <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
@@ -1016,32 +1143,47 @@ export default function Portfolio() {
                     </h3>
                     <div className="flex items-center mt-1">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">Real-time Monitoring</span>
+                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+                        Real-time Monitoring
+                      </span>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Impact Metrics */}
                 <div className="grid grid-cols-3 gap-4 mb-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-yellow-600">30%</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">MTTR Reduced</div>
+                    <div className="text-2xl font-bold text-yellow-600">
+                      30%
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      MTTR Reduced
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">100+</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Dashboards</div>
+                    <div className="text-2xl font-bold text-green-600">
+                      100+
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Dashboards
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-600">24/7</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Monitoring</div>
+                    <div className="text-2xl font-bold text-purple-600">
+                      24/7
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Monitoring
+                    </div>
                   </div>
                 </div>
 
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   Built comprehensive monitoring and observability solutions
                   using Prometheus, Grafana, and Loki. Implemented distributed
-                  tracing, created actionable dashboards, and configured intelligent
-                  alerting systems for proactive incident detection and faster response.
+                  tracing, created actionable dashboards, and configured
+                  intelligent alerting systems for proactive incident detection
+                  and faster response.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <Badge
@@ -1077,7 +1219,10 @@ export default function Portfolio() {
               <CardContent className="p-8">
                 <div className="flex items-center mb-4">
                   <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg mr-4 group-hover:scale-110 transition-transform duration-300">
-                    <Bot className="text-blue-600 dark:text-blue-400" size={32} />
+                    <Bot
+                      className="text-blue-600 dark:text-blue-400"
+                      size={32}
+                    />
                   </div>
                   <div>
                     <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
@@ -1085,24 +1230,34 @@ export default function Portfolio() {
                     </h3>
                     <div className="flex items-center mt-1">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">Fully Automated</span>
+                      <span className="text-sm text-green-600 dark:text-green-400 font-medium">
+                        Fully Automated
+                      </span>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Impact Metrics */}
                 <div className="grid grid-cols-3 gap-4 mb-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-blue-600">40%</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Deploy Speed</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Deploy Speed
+                    </div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-green-600">95%</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Success Rate</div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Success Rate
+                    </div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-600">50+</div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400">Pipelines</div>
+                    <div className="text-2xl font-bold text-purple-600">
+                      50+
+                    </div>
+                    <div className="text-xs text-gray-600 dark:text-gray-400">
+                      Pipelines
+                    </div>
                   </div>
                 </div>
 
@@ -1146,17 +1301,13 @@ export default function Portfolio() {
       {/* GitHub Activity Section */}
       <section
         id="github"
-        className="py-12 sm:py-20 px-3 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-800"
       >
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-6 sm:mb-8">
-            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
               GitHub Activity
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-lg px-2 sm:px-0">
-              Real-time GitHub contributions showing my latest coding activity
-              and project development.
-            </p>
           </div>
 
           {/* Desktop GitHub Activity Card */}
@@ -1199,7 +1350,6 @@ export default function Portfolio() {
                     <span className="text-white font-semibold">
                       GitHub Activity
                     </span>
-                    <span className="text-gray-400 ml-4">Year Overview</span>
                   </div>
                   <div className="flex bg-gray-800 rounded-lg p-1">
                     {availableYears.map((year) => (
@@ -1808,7 +1958,7 @@ export default function Portfolio() {
               >
                 +91-9999954851
               </button>
-                       </div>
+            </div>
             <div>
               <p className="text-gray-400">Email</p>
               <button
